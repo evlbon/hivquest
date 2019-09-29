@@ -1,22 +1,60 @@
-.App {
-  text-align: center;
+.grid{
+  width: 30vw;
+  height: 53vw;
+  background: antiquewhite no-repeat;
+  background-size: cover;
 }
 
-.App-logo {
-  height: 40vmin;
+.cell{
+  vertical-align: top;
+  border: 1px solid aqua;
+  display: inline-block;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.sDesktop{
+  width: 100%;
+  padding-bottom: 177.77%;
+  background: antiquewhite no-repeat;
+  background-size: cover;
 }
 
-.App-link {
-  color: #09d3ac;
+.sMobile{
+  width: 100%;
+  padding-bottom: 177.77%;
+  /*border: 1px solid black;*/
+  /*margin: 0 auto;*/
+  /*display: inline-block;*/
+  /*margin: 1vw 1vw 0 3vw;*/
+  background: white no-repeat;
+  background-size: cover;
+}
+
+.Mobile{
+  width: 100vw;
+  margin: 0 0 1vh 0;
+  overflow: hidden;
+
+
+}
+
+.Desktop{
+  margin: 0 5vw 1vh 5vw;
+}
+
+
+.anim-show{
+  opacity:0; /*Элемент полностью прозрачный (невидимый)*/
+  transition: 1s; /*Скорость перехода состояния элемента*/
+  animation: show 3s 1; /* Указываем название анимации, её время и количество повторов*/
+  animation-fill-mode: forwards; /* Чтобы элемент оставался в конечном состоянии анимации */
+  animation-delay: 0s; /* Задержка перед началом */
+}
+
+@keyframes show{
+  0%{
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
 }

@@ -1,0 +1,9 @@
+.regForm{
+    margin: 5vh 20vw 5vh 20vw;
+    width: 60vw;
+    overflow: hidden;
+}
+
+.regForm h1{
+    text-align: center;
+}
