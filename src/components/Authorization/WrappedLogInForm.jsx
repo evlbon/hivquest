@@ -49,11 +49,18 @@ const LogInForm = (props) => {
     return (
         <Form {...formItemLayout} onSubmit={handleSubmit}>
 
-            <Form.Item
-                label='Login'
-            >
-                {getFieldDecorator('login', {
-                    rules: [{required: true, message: 'Please input your login!', whitespace: true}],
+            <Form.Item label="E-mail">
+                {getFieldDecorator('email', {
+                    rules: [
+                        {
+                            type: 'email',
+                            message: 'The input is not valid E-mail!',
+                        },
+                        {
+                            required: true,
+                            message: 'Please input your E-mail!',
+                        },
+                    ],
                 })(<Input/>)}
             </Form.Item>
 

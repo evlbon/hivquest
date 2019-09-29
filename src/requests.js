@@ -7,37 +7,14 @@ const login = (value, callback) => {
 
     const body = JSON.stringify(value);
 
-    return axios(endPoint, {
-        data: body,
-        method: 'POST',
+    return axios({
+        "method": "POST",
+        "url": endPoint,
+        "data": body,
         headers: {
-            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
         },
     })
-
-    // return axios({
-    //     "method": "POST",
-    //     "url": endPoint,
-    //     "data": body,
-    //     "headers": {
-    //         "Content-Type": "application/json"
-    //     }
-    // })
-
-    // return axios.post(endPoint,body)
-
-    // axios({
-    //     "method": "POST",
-    //     "url": endPoint,
-    //     "data": body
-    // })
-    //     .then((response) => {
-    //         return response;
-    //     })
-    //     .catch((error) => {
-    //         callbacks.error(error.message)
-    //     });
 };
 
 const registration = async (value) => {
@@ -48,7 +25,10 @@ const registration = async (value) => {
     return axios({
         "method": "POST",
         "url": endPoint,
-        "data": body
+        "data": body,
+        headers: {
+            'Content-Type': 'application/json',
+        },
     })
     // .then((response) => {
     //     callbacks.success('Success');

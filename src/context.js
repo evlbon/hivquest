@@ -35,7 +35,8 @@ export const GameContextProvider = ({children}) => {
         try {
             const response = await requests.login(value);
 
-            const token = response.token;
+            const token = response.data.token;
+            // console.log(token)
             localStorage.setItem('token', token);
 
             dispatch({
@@ -44,14 +45,16 @@ export const GameContextProvider = ({children}) => {
             })
 
         } catch (error) {
-            callbacks.error(error.message)
+            callbacks.error(error.response.status === 400?
+                'Данные введены не верно или аккаунт не зарегистрирован':error.message)
         }
     };
 
-    const registration = async (value) => {
+    const registration = async (value, callback) => {
         try {
             await requests.registration(value);
             callbacks.success('Success');
+            callback();
         } catch (e) {
             callbacks.error(e.message)
         }
@@ -74,7 +77,18 @@ export const GameContextProvider = ({children}) => {
         })
     };
 
-    const actions = {registration, logIn, logOut, getUser};
+    const checkAuth = () => {
+        if(state.token && state.isAuthorize)
+            return 0;
+        const token = localStorage.getItem('token');
+        if(token)
+            dispatch({
+                type: 'RECEIVE_ACCESS_TOKEN',
+                payload: token,
+            })
+    };
+
+    const actions = {registration, logIn, logOut, getUser, checkAuth};
 
     return (
         <GameContext.Provider value={{state, actions}}>

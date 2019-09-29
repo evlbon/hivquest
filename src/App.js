@@ -1,29 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
-import Main from "./components/Main";
-import MyGrid from "./components/MyGrid";
-
-import {BrowserRouter as Router} from 'react-router-dom';
 import BaseRouter from './router';
-import Demo from "./components/Demo";
-import {GameContextProvider} from "./context";
+import {useGameAction} from "./context";
 
 const c = <div style={{background: "red", height: '100%'}}>X</div>;
-const set = [[4, 4, c]];
+// const set = [[4, 4, c]];
 
-const App = () => (
-    <div>
-        <Router>
-            <GameContextProvider>
-                <BaseRouter/>
-            </GameContextProvider>
-        </Router>
-
-    </div>
-);
-
-// const App = () => (<div>
-//     <MyGrid set={set}/>
-// </div>);
+const App = () => {
+    const {checkAuth} = useGameAction();
+    useEffect(() =>{
+        checkAuth();
+    });
+    return <BaseRouter/>
+};
 
 export default App;

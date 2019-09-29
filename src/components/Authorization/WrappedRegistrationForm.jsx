@@ -6,12 +6,14 @@ import {
     Select,
     Button, Icon,
 } from 'antd';
+import {useGameAction} from "../../context";
 
 const {Option} = Select;
 
 
 const RegistrationForm = (props) => {
     const [confirmDirty, setConfirmDirty] = useState(false);
+    const {registration} = useGameAction();
 
 
     const {getFieldDecorator} = props.form;
@@ -44,6 +46,7 @@ const RegistrationForm = (props) => {
         props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                registration(values, ()=>{props.history.push('/login/')})
             }
         });
     };
@@ -55,7 +58,7 @@ const RegistrationForm = (props) => {
 
     const compareToFirstPassword = (rule, value, callback) => {
         const {form} = props;
-        if (value && value !== form.getFieldValue('password')) {
+        if (value && value !== form.getFieldValue('pwd')) {
             callback('Two passwords that you enter is inconsistent!');
         } else {
             callback();
@@ -107,7 +110,7 @@ const RegistrationForm = (props) => {
             </Form.Item>
 
             <Form.Item label="Password" hasFeedback>
-                {getFieldDecorator('password', {
+                {getFieldDecorator('pwd', {
                     rules: [
                         {
                             required: true,
