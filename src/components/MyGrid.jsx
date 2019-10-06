@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Col, Row} from "antd";
 
-const w = 12, h = 8;
+const w = 10, h = 10;
 const bgImage = 'https://i.pinimg.com/originals/67/0f/49/670f499bf6c1a9d84c12d8ecfd38bd2e.jpg';
 
 
@@ -30,10 +30,15 @@ const MyGrid = ({set}) => {
             })
 
     });
-    return (<div className='grid' style={{backgroundImage: `url(/1.jpg)`}}>
-        {grid.map(r => <div style={{height: `${53 / h}vw`}}>
-            {r.map(c => <div style={{height: `${53 / h}vw`, width: `${30 / w}vw`,}} className="cell">{c&&c}</div>)} </div>)}
+    return (<div>
+        {grid.map(r => <div>
+            {r.map(c => <div className="cell">{c&&c}</div>)} </div>)}
     </div>)
+
+    // return (<div className='grid'>
+    //     {grid.map(r => <div style={{height: `${53 / h}vw`}}>
+    //         {r.map(c => <div style={{height: `${53 / h}vw`, width: `${30 / w}vw`,}} className="cell">{c&&c}</div>)} </div>)}
+    // </div>)
 };
 
 export default MyGrid

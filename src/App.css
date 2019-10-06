@@ -6,16 +6,19 @@
 }
 
 .cell{
+  height: 5.333vw;
+  width: 3vw;
   vertical-align: top;
-  border: 1px solid aqua;
+  /*border: 1px solid aqua;*/
   display: inline-block;
 }
 
 .sDesktop{
-  width: 100%;
-  padding-bottom: 177.77%;
-  background: antiquewhite no-repeat;
+  width: 30vw;
+  height: 53.3333vw;
+  background: no-repeat;
   background-size: cover;
+  overflow: hidden;
 }
 
 .sMobile{
@@ -25,7 +28,7 @@
   /*margin: 0 auto;*/
   /*display: inline-block;*/
   /*margin: 1vw 1vw 0 3vw;*/
-  background: white no-repeat;
+  background: no-repeat;
   background-size: cover;
 }
 
@@ -45,9 +48,8 @@
 .anim-show{
   opacity:0; /*Элемент полностью прозрачный (невидимый)*/
   transition: 1s; /*Скорость перехода состояния элемента*/
-  animation: show 3s 1; /* Указываем название анимации, её время и количество повторов*/
+  animation: show 1s 1; /* Указываем название анимации, её время и количество повторов*/
   animation-fill-mode: forwards; /* Чтобы элемент оставался в конечном состоянии анимации */
-  animation-delay: 0s; /* Задержка перед началом */
 }
 
 @keyframes show{
@@ -57,4 +59,51 @@
   100% {
     opacity:1;
   }
+}
+
+
+
+
+.right-bubble {
+  position: relative;
+  background: #00aabb;
+  border-radius: .4em;
+}
+
+.right-bubble:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color: #00aabb;
+  border-bottom: 0;
+  border-right: 0;
+  margin-left: -10px;
+  margin-bottom: -20px;
+}
+
+.left-bubble {
+  min-width: 10vw;
+  padding: 1vh;
+  position: relative;
+  background: rgba(0, 244, 255, 0.42);
+  border-radius: .4em;
+}
+
+.left-bubble:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color: rgba(0, 244, 255, 0.42);
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -10px;
+  margin-bottom: -20px;
 }

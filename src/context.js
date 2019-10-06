@@ -16,6 +16,7 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 token: null,
+                isAuthorize: false,
             };
         case 'GET_USER':
             return {
@@ -61,7 +62,10 @@ export const GameContextProvider = ({children}) => {
     };
 
     const logOut = async () => {
+        console.log(localStorage.getItem('token'))
+
         localStorage.removeItem('token');
+        console.log(localStorage.getItem('token'))
 
         dispatch({
             type: 'LOG_OUT',
@@ -78,10 +82,8 @@ export const GameContextProvider = ({children}) => {
     };
 
     const checkAuth = () => {
-        if(state.token && state.isAuthorize)
-            return 0;
         const token = localStorage.getItem('token');
-        if(token)
+        if(token&&token!=='undefined')
             dispatch({
                 type: 'RECEIVE_ACCESS_TOKEN',
                 payload: token,

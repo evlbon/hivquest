@@ -5,14 +5,21 @@ import {
     Input,
     Select,
     Button, Icon,
+    AutoComplete, Checkbox,
 } from 'antd';
 import {useGameAction} from "../../context";
+import requests from "../../requests";
 
 const {Option} = Select;
+
+const AutoCompleteOption = AutoComplete.Option;
 
 
 const RegistrationForm = (props) => {
     const [confirmDirty, setConfirmDirty] = useState(false);
+    const [autoCompleteResult, setAutoCompleteResult] = useState([]);
+    const [autoCompleteIndexes, setAutoCompleteIndexes] = useState({});
+
     const {registration} = useGameAction();
 
 
@@ -45,8 +52,13 @@ const RegistrationForm = (props) => {
         e.preventDefault();
         props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
-                registration(values, ()=>{props.history.push('/login/')})
+                const changed = {
+                    ucpa: values.ucpa? 1:0,
+                    fullAddress: autoCompleteIndexes[values.fullAddress],
+                    phone: `${values.prefix}${values.phone}`
+                };
+                console.log('Received values of form: ', {...values,...changed});
+                registration({...values,...changed}, ()=>{props.history.push('/login/')})
             }
         });
     };
@@ -72,6 +84,52 @@ const RegistrationForm = (props) => {
         }
         callback();
     };
+    const validateUCPA = (rule, value, callback) => {
+        !value? callback('Check it'):callback();
+    };
+
+    const validateAddress = (rule, value, callback) => {
+        if (value && !autoCompleteResult.find(v => value === v)) {
+            callback('Choose correct');
+        } else {
+            callback();
+        }
+    };
+
+    const validatePhone = (rule, value, callback) => {
+        if(/^[0-9]+$/.test(value))
+            callback();
+        else
+            callback('Should consist only numbers')
+    }
+
+    const handleAddressChange = async value => {
+        let autoCompleteResult;
+        let autoCompleteIndexes = {};
+        if (!value || value.length < 2) {
+            autoCompleteResult = [];
+        } else {
+            try {
+                const response = await requests.cities({city: value});
+                // console.log(response)
+                autoCompleteResult =  response.data.map(d => {
+                    const item = `${d.cityName}, ${d.regionName}`;
+                    autoCompleteIndexes[item] = d.cityId;
+                    return item;
+                });
+            } catch (e) {
+                autoCompleteResult = [];
+                console.log(e)
+
+            }
+        }
+        if(autoCompleteResult.length>0){
+            setAutoCompleteResult(autoCompleteResult);
+            setAutoCompleteIndexes(autoCompleteIndexes);
+        }
+        console.log(autoCompleteIndexes)
+        // console.log(autoCompleteResult)
+    };
 
     const prefixSelector = getFieldDecorator('prefix', {
         initialValue: '+7',
@@ -81,6 +139,10 @@ const RegistrationForm = (props) => {
             <Option value="87">+87</Option>
         </Select>,
     );
+
+    const addressOptions = autoCompleteResult.map(address => (
+        <AutoCompleteOption key={address}>{address}</AutoCompleteOption>
+    ));
 
 
     return (
@@ -163,7 +225,9 @@ const RegistrationForm = (props) => {
 
             <Form.Item label="Phone Number">
                 {getFieldDecorator('phone', {
-                    rules: [{required: true, message: 'Please input your phone number!'}],
+                    rules: [{required: true, message: 'Please input your phone number!'},{
+                        validator: validatePhone,
+                    }],
                 })(<Input addonBefore={prefixSelector} style={{width: '100%'}}/>)}
             </Form.Item>
 
@@ -171,8 +235,17 @@ const RegistrationForm = (props) => {
                 label='Address'
             >
                 {getFieldDecorator('fullAddress', {
-                    rules: [{required: true, message: 'Please input your address!', whitespace: true}],
-                })(<Input/>)}
+                    rules: [{required: true, message: 'Please input your address!', whitespace: true},{
+                        validator: validateAddress,
+                    }],
+                })(<AutoComplete
+                    dataSource={addressOptions}
+                    onChange={handleAddressChange}
+                    placeholder="City"
+                    >
+                        <Input />
+                    </AutoComplete>
+                )}
             </Form.Item>
 
 
@@ -182,6 +255,19 @@ const RegistrationForm = (props) => {
                 {getFieldDecorator('educationInfo', {
                     rules: [{required: true, message: 'Please input your education info!', whitespace: true}],
                 })(<Input/>)}
+            </Form.Item>
+
+            <Form.Item {...tailFormItemLayout}>
+                {getFieldDecorator('ucpa', {
+                    rules: [{
+                        validator: validateUCPA,
+                    }],
+                    valuePropName: 'checked',
+                })(
+                    <Checkbox>
+                        I have read the <a href="">agreement</a>
+                    </Checkbox>,
+                )}
             </Form.Item>
 
             <Form.Item {...tailFormItemLayout}>

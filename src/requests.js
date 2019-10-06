@@ -39,8 +39,23 @@ const registration = async (value) => {
     // });
 };
 
+const cities = async (value) => {
+    const endPoint = endpoints.cities;
+
+    const body = JSON.stringify(value);
+
+    return axios({
+        "method": "GET",
+        "url": endPoint,
+        params: value,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+};
+
 const requests = {
-    login, registration
+    login, registration, cities
 };
 
 export default requests;

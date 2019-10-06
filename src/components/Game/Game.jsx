@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import Demo from "../Demo";
 import {withRouter} from 'react-router-dom';
 import {useGameAction, useGameState} from "../../context";
-import {Icon} from "antd";
+import {Button, Icon} from "antd";
 
 const Game = (props) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 576);
@@ -26,10 +26,10 @@ const Game = (props) => {
     !isAuthorize && props.history.push('/login/');
 
     return <div>
-        <div style={{height: '5vh', margin: '0 5vw'}}>
-            <div style={{float: 'right',height: '5vh'}} onClick={handleLogOut}>
-                <Icon type="logout" />
-            </div>
+        <div style={{margin: '1vh 5vw', paddingLeft: '85vw'}}>
+            <Button className="ant-btn" onClick={handleLogOut}>
+                <Icon style={{fontSize: '3vh'}} type="logout"/>
+            </Button>
         </div>
         <Demo isMobile={isMobile}/>
         <br/>
