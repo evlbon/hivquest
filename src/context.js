@@ -9,7 +9,7 @@ const reducer = (state, action) => {
         case'RECEIVE_ACCESS_TOKEN':
             return {
                 ...state,
-                token: action.payload,
+                ...action.payload,
                 isAuthorize: true,
             };
         case'LOG_OUT':
@@ -36,13 +36,16 @@ export const GameContextProvider = ({children}) => {
         try {
             const response = await requests.login(value);
 
-            const token = response.data.token;
-            // console.log(token)
+            const {token, gender, name, currentEpisode, points} = response.data;
             localStorage.setItem('token', token);
+            localStorage.setItem('gender', gender);
+            localStorage.setItem('name', name);
+            localStorage.setItem('currentEpisode', currentEpisode);
+            localStorage.setItem('points', points);
 
             dispatch({
                 type: 'RECEIVE_ACCESS_TOKEN',
-                payload: token,
+                payload: {token, gender, name, currentEpisode, points},
             })
 
         } catch (error) {
@@ -62,10 +65,10 @@ export const GameContextProvider = ({children}) => {
     };
 
     const logOut = async () => {
-        console.log(localStorage.getItem('token'))
+        // console.log(localStorage.getItem('token'))
 
         localStorage.removeItem('token');
-        console.log(localStorage.getItem('token'))
+        // console.log(localStorage.getItem('token'))
 
         dispatch({
             type: 'LOG_OUT',
@@ -83,10 +86,14 @@ export const GameContextProvider = ({children}) => {
 
     const checkAuth = () => {
         const token = localStorage.getItem('token');
+        const gender = localStorage.getItem('gender');
+        const name = localStorage.getItem('name');
+        const currentEpisode = localStorage.getItem('currentEpisode');
+        const points = localStorage.getItem('points');
         if(token&&token!=='undefined')
             dispatch({
                 type: 'RECEIVE_ACCESS_TOKEN',
-                payload: token,
+                payload: {token, gender, name, currentEpisode, points},
             })
     };
 

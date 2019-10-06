@@ -6,6 +6,7 @@ import {
     Select,
     Button, Icon,
     AutoComplete, Checkbox,
+    Radio,
 } from 'antd';
 import {useGameAction} from "../../context";
 import requests from "../../requests";
@@ -53,12 +54,14 @@ const RegistrationForm = (props) => {
         props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 const changed = {
-                    ucpa: values.ucpa? 1:0,
+                    ucpa: values.ucpa ? 1 : 0,
                     fullAddress: autoCompleteIndexes[values.fullAddress],
                     phone: `${values.prefix}${values.phone}`
                 };
-                console.log('Received values of form: ', {...values,...changed});
-                registration({...values,...changed}, ()=>{props.history.push('/login/')})
+                console.log('Received values of form: ', {...values, ...changed});
+                registration({...values, ...changed}, () => {
+                    props.history.push('/login/')
+                })
             }
         });
     };
@@ -85,7 +88,7 @@ const RegistrationForm = (props) => {
         callback();
     };
     const validateUCPA = (rule, value, callback) => {
-        !value? callback('Check it'):callback();
+        !value ? callback('Check it') : callback();
     };
 
     const validateAddress = (rule, value, callback) => {
@@ -97,7 +100,7 @@ const RegistrationForm = (props) => {
     };
 
     const validatePhone = (rule, value, callback) => {
-        if(/^[0-9]+$/.test(value))
+        if (/^[0-9]+$/.test(value))
             callback();
         else
             callback('Should consist only numbers')
@@ -112,7 +115,7 @@ const RegistrationForm = (props) => {
             try {
                 const response = await requests.cities({city: value});
                 // console.log(response)
-                autoCompleteResult =  response.data.map(d => {
+                autoCompleteResult = response.data.map(d => {
                     const item = `${d.cityName}, ${d.regionName}`;
                     autoCompleteIndexes[item] = d.cityId;
                     return item;
@@ -123,7 +126,7 @@ const RegistrationForm = (props) => {
 
             }
         }
-        if(autoCompleteResult.length>0){
+        if (autoCompleteResult.length > 0) {
             setAutoCompleteResult(autoCompleteResult);
             setAutoCompleteIndexes(autoCompleteIndexes);
         }
@@ -225,25 +228,34 @@ const RegistrationForm = (props) => {
 
             <Form.Item label="Phone Number">
                 {getFieldDecorator('phone', {
-                    rules: [{required: true, message: 'Please input your phone number!'},{
+                    rules: [{required: true, message: 'Please input your phone number!'}, {
                         validator: validatePhone,
                     }],
                 })(<Input addonBefore={prefixSelector} style={{width: '100%'}}/>)}
+            </Form.Item>
+
+            <Form.Item label="Gender">
+                {getFieldDecorator('gender', {rules: [{required: true, message: 'Please choose your gender'}]})(
+                    <Radio.Group>
+                        <Radio.Button value={1}>Male</Radio.Button>
+                        <Radio.Button value={0}>Female</Radio.Button>
+                    </Radio.Group>,
+                )}
             </Form.Item>
 
             <Form.Item
                 label='Address'
             >
                 {getFieldDecorator('fullAddress', {
-                    rules: [{required: true, message: 'Please input your address!', whitespace: true},{
+                    rules: [{required: true, message: 'Please input your address!', whitespace: true}, {
                         validator: validateAddress,
                     }],
                 })(<AutoComplete
-                    dataSource={addressOptions}
-                    onChange={handleAddressChange}
-                    placeholder="City"
+                        dataSource={addressOptions}
+                        onChange={handleAddressChange}
+                        placeholder="City"
                     >
-                        <Input />
+                        <Input/>
                     </AutoComplete>
                 )}
             </Form.Item>
@@ -273,7 +285,7 @@ const RegistrationForm = (props) => {
             <Form.Item {...tailFormItemLayout}>
                 <div>
                     <Button style={{marginRight: '1vw'}} onClick={() => props.history.push('/login/')}>
-                        <Icon type="arrow-left" />
+                        <Icon type="arrow-left"/>
                         LogIn
                     </Button>
 

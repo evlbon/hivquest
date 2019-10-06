@@ -30,19 +30,24 @@ const registration = async (value) => {
             'Content-Type': 'application/json',
         },
     })
-    // .then((response) => {
-    //     callbacks.success('Success');
-    //     return response;
-    // })
-    // .catch((error) => {
-    //     callbacks.error(error.message)
-    // });
+};
+
+
+const startGame = async (token) => {
+    const endPoint = endpoints.startGame;
+
+    return axios({
+        "method": "POST",
+        "url": endPoint,
+        headers: {
+            'Content-Type': 'application/json',
+            token,
+        },
+    })
 };
 
 const cities = async (value) => {
     const endPoint = endpoints.cities;
-
-    const body = JSON.stringify(value);
 
     return axios({
         "method": "GET",
@@ -55,7 +60,7 @@ const cities = async (value) => {
 };
 
 const requests = {
-    login, registration, cities
+    login, registration, cities, startGame
 };
 
 export default requests;

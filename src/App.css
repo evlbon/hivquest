@@ -16,6 +16,8 @@
 .sDesktop{
   width: 30vw;
   height: 53.3333vw;
+  max-height: 90vh;
+  max-width: 50.625vh;
   background: no-repeat;
   background-size: cover;
   overflow: hidden;
@@ -106,4 +108,9 @@
   border-left: 0;
   margin-left: -10px;
   margin-bottom: -20px;
+}
+
+.startPage{
+  font-size: xx-large;
+  padding: 40vh 30vw 0 30vw;
 }

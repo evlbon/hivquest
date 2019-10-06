@@ -3,6 +3,7 @@ import Demo from "../Demo";
 import {withRouter} from 'react-router-dom';
 import {useGameAction, useGameState} from "../../context";
 import {Button, Icon} from "antd";
+import StartGame from './Start';
 
 const Game = (props) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 576);
@@ -22,8 +23,13 @@ const Game = (props) => {
 
 
 
-    const {isAuthorize} = useGameState();
+    const {isAuthorize, currentEpisode} = useGameState();
     !isAuthorize && props.history.push('/login/');
+
+    console.log(useGameState());
+
+    if(currentEpisode === '0')
+        return <StartGame/>
 
     return <div>
         <div style={{margin: '1vh 5vw', paddingLeft: '85vw'}}>
