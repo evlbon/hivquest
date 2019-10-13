@@ -46,6 +46,21 @@ const startGame = async (token) => {
     })
 };
 
+const getSlide = async (token, id) => {
+    const endPoint = endpoints.getSlide;
+    console.log({previous: id - id%3});
+
+    return axios({
+        "method": "GET",
+        "url": endPoint,
+        params: {previous: id - id%3},
+        headers: {
+            'Content-Type': 'application/json',
+            token,
+        },
+    })
+};
+
 const cities = async (value) => {
     const endPoint = endpoints.cities;
 
@@ -60,7 +75,7 @@ const cities = async (value) => {
 };
 
 const requests = {
-    login, registration, cities, startGame
+    login, registration, cities, startGame, getSlide
 };
 
 export default requests;

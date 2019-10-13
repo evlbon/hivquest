@@ -31,8 +31,8 @@ const MyGrid = ({set}) => {
 
     });
     return (<div>
-        {grid.map(r => <div>
-            {r.map(c => <div className="cell">{c&&c}</div>)} </div>)}
+        {grid.map((r,rid) => <div key={rid}>
+            {r.map((c,cid) => <div key={`${rid}${cid}`} className="cell">{c&&c}</div>)} </div>)}
     </div>)
 
     // return (<div className='grid'>

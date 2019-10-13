@@ -1,18 +1,20 @@
 import React, {useEffect, useState} from "react";
 import {Button, Icon} from "antd";
-import {useGameState} from "../../context";
+import {useGameAction, useGameState} from "../../context";
 import requests from "../../requests";
 import callbacks from "../../callbacks";
 
 const StartGame = () => {
 
     const {token} = useGameState();
+    const {nextSlide} = useGameAction();
 
     const handleStart = async () => {
         try {
             const response = await requests.startGame(token);
             callbacks.success(response.data.message);
             console.log(response);
+            nextSlide(1)
         } catch (e) {
             callbacks.error(e)
         }

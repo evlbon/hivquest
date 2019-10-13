@@ -6,6 +6,11 @@ const GameContext = React.createContext();
 
 const reducer = (state, action) => {
     switch (action.type) {
+        case'NEXT_SLIDE':
+            return {
+                ...state,
+                currentEpisode: action.payload,
+            };
         case'RECEIVE_ACCESS_TOKEN':
             return {
                 ...state,
@@ -45,7 +50,7 @@ export const GameContextProvider = ({children}) => {
 
             dispatch({
                 type: 'RECEIVE_ACCESS_TOKEN',
-                payload: {token, gender, name, currentEpisode, points},
+                payload: {token, gender, name, currentEpisode: parseInt(currentEpisode), points},
             })
 
         } catch (error) {
@@ -84,6 +89,14 @@ export const GameContextProvider = ({children}) => {
         })
     };
 
+    const nextSlide = (id) => {
+        localStorage.setItem('currentEpisode', `${id}`);
+        dispatch({
+            type: 'NEXT_SLIDE',
+            payload: id,
+        })
+    };
+
     const checkAuth = () => {
         const token = localStorage.getItem('token');
         const gender = localStorage.getItem('gender');
@@ -93,11 +106,11 @@ export const GameContextProvider = ({children}) => {
         if(token&&token!=='undefined')
             dispatch({
                 type: 'RECEIVE_ACCESS_TOKEN',
-                payload: {token, gender, name, currentEpisode, points},
+                payload: {token, gender, name, currentEpisode: parseInt(currentEpisode), points},
             })
     };
 
-    const actions = {registration, logIn, logOut, getUser, checkAuth};
+    const actions = {registration, logIn, logOut, getUser, checkAuth, nextSlide};
 
     return (
         <GameContext.Provider value={{state, actions}}>
