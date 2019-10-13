@@ -7,9 +7,11 @@
 
 .cell{
   height: 5.333vw;
+  max-height: 9vh;
   width: 3vw;
+  max-width: 5.0625vh;
   vertical-align: top;
-  /*border: 1px solid aqua;*/
+  border: 1px solid aqua;
   display: inline-block;
 }
 
@@ -61,53 +63,6 @@
   100% {
     opacity:1;
   }
-}
-
-
-
-
-.right-bubble {
-  position: relative;
-  background: #00aabb;
-  border-radius: .4em;
-}
-
-.right-bubble:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border: 20px solid transparent;
-  border-top-color: #00aabb;
-  border-bottom: 0;
-  border-right: 0;
-  margin-left: -10px;
-  margin-bottom: -20px;
-}
-
-.left-bubble {
-  min-width: 10vw;
-  padding: 1vh;
-  position: relative;
-  background: rgba(0, 244, 255, 0.42);
-  border-radius: .4em;
-}
-
-.left-bubble:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border: 20px solid transparent;
-  border-top-color: rgba(0, 244, 255, 0.42);
-  border-bottom: 0;
-  border-left: 0;
-  margin-left: -10px;
-  margin-bottom: -20px;
 }
 
 .startPage{

@@ -1,4 +1,4 @@
-const baseUrl = 'http://116.203.200.150:10200/api';
+const baseUrl = 'http://78.46.183.3:8080/api';
 const authUrl = `${baseUrl}/auth`;
 const gameUrl = `${baseUrl}/game`;
 
