@@ -9,7 +9,7 @@ const Registration = (props) => {
     isAuthorize && props.history.push('/game/');
     return <div>
         <div className="regForm">
-            <h1>Registration</h1>
+            <h1>Регистрация</h1>
             <WrappedRegistrationForm/>
         </div>
     </div>

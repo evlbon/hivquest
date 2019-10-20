@@ -1,0 +1,111 @@
+.grid{
+    width: 30vw;
+    height: 53vw;
+    background: antiquewhite no-repeat;
+    background-size: cover;
+}
+
+.dCell{
+    height: calc(53vw/16);
+    /*max-height: 9vh;*/
+    width: calc(30vw/9);
+    /*max-width: 5.0625vh;*/
+    vertical-align: top;
+    /*border: 1px solid aqua;*/
+    display: inline-block;
+}
+
+.dSlide{
+    width: 30vw;
+    height: 53vw;
+    /*max-height: 90vh;*/
+    /*max-width: 50.625vh;*/
+    background: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+
+.dAuthorTextB{
+    padding: 3px;
+    background: white;
+    width: 30vw;
+    /*max-width: 50.625vh;*/
+    height: 13vw;
+    /*height: 6vw;*/
+    font-size: 1.5vw
+
+    /*font-size: calc(1rem + 1.23vw)*/
+}
+.dAuthorTextM{
+    padding: 3px;
+    background: rgba(104,82,143,0.76);
+    width: 30vw;
+    /*max-width: 50.625vh;*/
+    height: 13vw;
+    font-size: 1.2vw;
+}
+.dAuthorTextS{
+     padding: 3px;
+     background: white;
+     width: 30vw;
+     /*max-width: 50.625vh;*/
+     height: 13vw;
+     font-size: 0.8vw;
+ }
+
+.dAuthorTextXS{
+    padding: 3px;
+    background: white;
+    width: 30vw;
+    /*max-width: 50.625vh;*/
+    height: 13vw;
+    font-size: 0.6vw;
+}
+
+.dRight-bubble {
+    text-align: center;
+    padding: 1vh 1vw 5vh 1vw;
+    position: absolute;
+    max-width: 20vw;
+    font-size: 0.8vw;
+
+    background: url('/right.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+
+.dLeft-bubble {
+    text-align: center;
+    padding: 1vh 1vw 5vh 1vw;
+    position: absolute;
+    max-width: 20vw;
+    font-size: 0.8vw;
+
+    background: url('/left.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+
+.dRight-bubble-top {
+    text-align: center;
+    padding: 2vw 1vw 1vh 1vw;
+    position: absolute;
+    max-width: 20vw;
+    font-size: 0.8vw;
+
+    background: url('/right_top.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+
+.dLeft-bubble-top {
+    text-align: center;
+    padding: 2vw 1vw 1vh 1vw;
+    position: absolute;
+    max-width: 20vw;
+    font-size: 0.8vw;
+
+    background: url('/left_top.png') no-repeat;
+    background-size: 100% 100%;
+}

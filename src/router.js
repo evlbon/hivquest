@@ -1,20 +1,17 @@
 import React from "react";
 import { Route } from 'react-router-dom';
-import Demo from "./components/Demo";
+import Game from "./components/Game/Game";
 import Registration from "./components/Authorization/Registartion";
 import LogIn from "./components/Authorization/LogIn";
-import Game from "./components/Game/Game";
+import GameLayout from "./components/Game/GameLayout";
+import Main from "./components/Main";
 
-const Main = () => {
-    return <div>HELLO</div>
-};
 const BaseRouter = () => (
     <div>
         <Route exact path='/' component={Main} />
         <Route exact path='/registration/' component={Registration} />
         <Route exact path='/login/' component={LogIn} />
-        <Route exact path='/game/' component={Game} />
-        <Route exact path='/demo/' component={Demo} />
+        <Route exact path='/game/' component={GameLayout} />
     </div>
 );
 

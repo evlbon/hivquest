@@ -10,7 +10,7 @@ const LogIn = (props) => {
     isAuthorize && props.history.push('/game/');
 
     return <div className="regForm">
-        <h1>LogIn</h1>
+        <h1>Вход</h1>
         <WrappedLogInForm/>
     </div>
 };

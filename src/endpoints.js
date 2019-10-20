@@ -7,6 +7,7 @@ const endpoints = {
     registration: `${authUrl}/registration/`,
     login: `${authUrl}/login`,
     cities: `${authUrl}/city_suggester`,
+    getUser: `${authUrl}/user`,
 
     startGame: `${gameUrl}/start_game`,
     getSlide: `${gameUrl}/slide`,

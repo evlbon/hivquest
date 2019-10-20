@@ -12,7 +12,9 @@ const App = () => {
     useEffect(() =>{
         !isAuthorize&&checkAuth();
     });
-    return <BaseRouter/>
+    return <div>
+        <BaseRouter/>
+    </div>
 };
 
 export default App;

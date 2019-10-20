@@ -1,19 +1,4 @@
-.grid{
-  width: 30vw;
-  height: 53vw;
-  background: antiquewhite no-repeat;
-  background-size: cover;
-}
 
-.cell{
-  height: 5.333vw;
-  max-height: 9vh;
-  width: 3vw;
-  max-width: 5.0625vh;
-  vertical-align: top;
-  border: 1px solid aqua;
-  display: inline-block;
-}
 
 .sDesktop{
   width: 30vw;
@@ -54,6 +39,7 @@
   transition: 1s; /*Скорость перехода состояния элемента*/
   animation: show 1s 1; /* Указываем название анимации, её время и количество повторов*/
   animation-fill-mode: forwards; /* Чтобы элемент оставался в конечном состоянии анимации */
+
 }
 
 @keyframes show{
@@ -69,3 +55,28 @@
   font-size: xx-large;
   padding: 40vh 30vw 0 30vw;
 }
+
+
+.authorTextB{
+   background: white;
+   width: 30vw;
+   max-width: 50.625vh;
+   height: 6vw;
+   font-size: 1vw;
+ }
+.authorTextM{
+  background: white;
+  width: 30vw;
+  max-width: 50.625vh;
+  height: 6vw;
+  font-size: 0.8vw;
+}
+.authorTextS{
+  background: white;
+  width: 30vw;
+  max-width: 50.625vh;
+  height: 6vw;
+  font-size: 0.55vw;
+}
+
+

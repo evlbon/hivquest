@@ -152,7 +152,7 @@ const RegistrationForm = (props) => {
         <Form {...formItemLayout} onSubmit={handleSubmit}>
 
             <Form.Item
-                label='Login'
+                label='Логин'
             >
                 {getFieldDecorator('login', {
                     rules: [{required: true, message: 'Please input your login!', whitespace: true}],
@@ -174,7 +174,7 @@ const RegistrationForm = (props) => {
                 })(<Input/>)}
             </Form.Item>
 
-            <Form.Item label="Password" hasFeedback>
+            <Form.Item label="Пароль" hasFeedback>
                 {getFieldDecorator('pwd', {
                     rules: [
                         {
@@ -188,7 +188,7 @@ const RegistrationForm = (props) => {
                 })(<Input.Password/>)}
             </Form.Item>
 
-            <Form.Item label="Confirm Password" hasFeedback>
+            <Form.Item label="Подтвердите пароль" hasFeedback>
                 {getFieldDecorator('confirm', {
                     rules: [
                         {
@@ -203,7 +203,7 @@ const RegistrationForm = (props) => {
             </Form.Item>
 
             <Form.Item
-                label='First Name'
+                label='Имя'
             >
                 {getFieldDecorator('name', {
                     rules: [{required: true, message: 'Please input your first name!', whitespace: true}],
@@ -211,7 +211,7 @@ const RegistrationForm = (props) => {
             </Form.Item>
 
             <Form.Item
-                label='Last Name'
+                label='Фамилия'
             >
                 {getFieldDecorator('familyName', {
                     rules: [{required: true, message: 'Please input your last name!', whitespace: true}],
@@ -219,14 +219,14 @@ const RegistrationForm = (props) => {
             </Form.Item>
 
             <Form.Item
-                label='Patronymic'
+                label='Отчество'
             >
                 {getFieldDecorator('patronymic', {
                     rules: [{required: true, message: 'Please input your patronymic!', whitespace: true}],
                 })(<Input/>)}
             </Form.Item>
 
-            <Form.Item label="Phone Number">
+            <Form.Item label="Телефон">
                 {getFieldDecorator('phone', {
                     rules: [{required: true, message: 'Please input your phone number!'}, {
                         validator: validatePhone,
@@ -234,17 +234,17 @@ const RegistrationForm = (props) => {
                 })(<Input addonBefore={prefixSelector} style={{width: '100%'}}/>)}
             </Form.Item>
 
-            <Form.Item label="Gender">
+            <Form.Item label="Пол">
                 {getFieldDecorator('gender', {rules: [{required: true, message: 'Please choose your gender'}]})(
                     <Radio.Group>
-                        <Radio.Button value={1}>Male</Radio.Button>
-                        <Radio.Button value={0}>Female</Radio.Button>
+                        <Radio.Button value={1}>Мужской</Radio.Button>
+                        <Radio.Button value={0}>Женский</Radio.Button>
                     </Radio.Group>,
                 )}
             </Form.Item>
 
             <Form.Item
-                label='Address'
+                label='Адрес'
             >
                 {getFieldDecorator('fullAddress', {
                     rules: [{required: true, message: 'Please input your address!', whitespace: true}, {
@@ -253,7 +253,7 @@ const RegistrationForm = (props) => {
                 })(<AutoComplete
                         dataSource={addressOptions}
                         onChange={handleAddressChange}
-                        placeholder="City"
+                        placeholder="Город"
                     >
                         <Input/>
                     </AutoComplete>
@@ -262,7 +262,7 @@ const RegistrationForm = (props) => {
 
 
             <Form.Item
-                label='Education info'
+                label='Информация об образовании'
             >
                 {getFieldDecorator('educationInfo', {
                     rules: [{required: true, message: 'Please input your education info!', whitespace: true}],
@@ -276,8 +276,8 @@ const RegistrationForm = (props) => {
                     }],
                     valuePropName: 'checked',
                 })(
-                    <Checkbox>
-                        I have read the <a href="">agreement</a>
+                    <Checkbox style={{color:'#ffe45a'}}>
+                        Я согласен с <a href="">условиями</a>
                     </Checkbox>,
                 )}
             </Form.Item>
@@ -286,11 +286,11 @@ const RegistrationForm = (props) => {
                 <div>
                     <Button style={{marginRight: '1vw'}} onClick={() => props.history.push('/login/')}>
                         <Icon type="arrow-left"/>
-                        LogIn
+                        Вход
                     </Button>
 
                     <Button type="primary" htmlType="submit">
-                        Register
+                        Зарегистрироваться
                     </Button>
                 </div>
             </Form.Item>

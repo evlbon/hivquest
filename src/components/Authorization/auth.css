@@ -2,8 +2,10 @@
     margin: 5vh 20vw 5vh 20vw;
     width: 60vw;
     overflow: hidden;
+    color: #ffe45a;
 }
 
 .regForm h1{
     text-align: center;
+    color: #ffe45a;
 }

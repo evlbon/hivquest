@@ -50,7 +50,7 @@ export const GameContextProvider = ({children}) => {
 
             dispatch({
                 type: 'RECEIVE_ACCESS_TOKEN',
-                payload: {token, gender, name, currentEpisode: parseInt(currentEpisode), points},
+                payload: {token, gender, name, currentEpisode: parseInt(currentEpisode+1), points},
             })
 
         } catch (error) {
@@ -70,10 +70,9 @@ export const GameContextProvider = ({children}) => {
     };
 
     const logOut = async () => {
-        // console.log(localStorage.getItem('token'))
+        console.log(localStorage.getItem('token'))
 
         localStorage.removeItem('token');
-        // console.log(localStorage.getItem('token'))
 
         dispatch({
             type: 'LOG_OUT',
@@ -99,15 +98,30 @@ export const GameContextProvider = ({children}) => {
 
     const checkAuth = () => {
         const token = localStorage.getItem('token');
+
         const gender = localStorage.getItem('gender');
         const name = localStorage.getItem('name');
         const currentEpisode = localStorage.getItem('currentEpisode');
         const points = localStorage.getItem('points');
-        if(token&&token!=='undefined')
+
+        if (token && token !== 'undefined') {
             dispatch({
                 type: 'RECEIVE_ACCESS_TOKEN',
                 payload: {token, gender, name, currentEpisode: parseInt(currentEpisode), points},
-            })
+            });
+        }
+
+
+
+        // if (token && token !== 'undefined') {
+        //     requests.getUser(token).then(r => {
+        //         const {gender, name, currentEpisode, points} = r.data;
+        //         dispatch({
+        //             type: 'RECEIVE_ACCESS_TOKEN',
+        //             payload: {token, gender, name, currentEpisode: parseInt(currentEpisode)+1, points},
+        //         })
+        //     });
+        // }
     };
 
     const actions = {registration, logIn, logOut, getUser, checkAuth, nextSlide};

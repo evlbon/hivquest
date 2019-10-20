@@ -1,0 +1,87 @@
+
+.mSlide{
+    width: 90vw;
+    margin: 1vw 5vw;
+    height: 160vw;
+    background: no-repeat;
+    background-size: cover;
+}
+
+.mGrid{
+    width: 100vw;
+    height: 177.777vw;
+    background: antiquewhite no-repeat;
+    background-size: cover;
+}
+
+.mCell{
+    height: 10vw;
+    width: 10vw;
+    vertical-align: top;
+    /*border: 1px solid rgba(3, 159, 0, 0.29);*/
+    display: inline-block;
+}
+
+.mAuthorTextB{
+    background: white;
+    width: 90vw;
+    height: 25vw;
+    font-size: 3vw;
+}
+.mAuthorTextM{
+    background: white;
+    width: 90vw;
+    height: 25vw;
+    font-size: 2.3vw;
+}
+.mAuthorTextS{
+    background: white;
+    width: 90vw;
+    height: 25vw;
+    font-size: 2vw;
+}
+
+.mAuthorTextXS{
+    background: white;
+    width: 90vw;
+    height: 25vw;
+    font-size: 2vw;
+}
+
+.mNext{
+    margin-right: 50px;
+    float: right;
+}
+
+.mBubble {
+    min-width: 10vw;
+    padding: 1vh;
+    position: relative;
+    background: rgba(0, 244, 255, 0.42);
+    border-radius: .4em;
+}
+.mRight-bubble {
+    text-align: center;
+    padding: 5vw 6vw 10vw 6vw;
+    position: absolute;
+    /*width: 100px;*/
+    max-width: 80vw;
+    font-size: 2.5vw;
+
+
+    background: url('/right.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+
+.mLeft-bubble {
+    text-align: center;
+    padding: 5vw 6vw 12vw 6vw;
+    position: absolute;
+    /*width: 100px;*/
+    max-width: 80vw;
+    font-size: 2.5vw;
+
+    background: url('/left.png') no-repeat;
+    background-size: 100% 100%;
+}

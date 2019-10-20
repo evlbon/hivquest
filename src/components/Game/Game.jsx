@@ -1,46 +1,80 @@
 import React, {useEffect, useState} from "react";
-import Demo from "../Demo";
-import {withRouter} from 'react-router-dom';
-import {useGameAction, useGameState} from "../../context";
-import {Button, Icon} from "antd";
-import StartGame from './Start';
+import {Button} from "antd";
 import requests from "../../requests";
+import {useGameAction, useGameState} from "../../context";
+import callbacks from "../../callbacks";
+import Interaction from "./Interactiv/Interaction";
 
-const Game = (props) => {
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 576);
-    const {logOut} = useGameAction();
-    const {isAuthorize, currentEpisode} = useGameState();
+const colors = ['url(/1.jpg)', 'url(/2.jpg)', 'url(/3.jpg)', 'url(/4.jpg)'];
+
+function randomColor() {
+    let rand = Math.random() * 3;
+    return colors[Math.round(rand)];
+}
+
+
+const Game = ({child}) => {
+    const [slides, setSlides] = useState();
+    const [interaction, setInteraction] = useState(0);
+    const {nextSlide} = useGameAction();
+    const {currentEpisode, token} = useGameState();
 
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth < 576);
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    });
+        if (currentEpisode)
+            requests.getSlide(token, currentEpisode - 1).then(r => {
+                setInteraction(0);
+                if (r.data.length === 3)
+                    setSlides(r.data);
+                console.log(r.data)
+            }).catch(e => {
+                setSlides(undefined);
+                callbacks.error(e.message);
+            });
+    }, [currentEpisode]);
 
-    const handleLogOut = () => {
-        logOut();
+    const onClick = () => {
+        const id = (currentEpisode - 1) % 3;
+        if (slides && slides[id] && slides[id].interaction && slides[id].showInteraction)
+            setInteraction(slides[id].interaction.id);
+        else
+            nextSlide(currentEpisode + 1);
     };
 
+    const reset = () => {
+        nextSlide(1);
+    };
 
-    !isAuthorize && props.history.push('/login/');
+    const getImage = (id) => {
+        if (slides && slides[id]) {
+            const img = new Image();
+            img.src = slides[id].imageLink;
+            return `url(${slides[id].imageLink})`;
+        } else
+            return 'url(/noslide.jpg)'
+    };
 
-    console.log(useGameState());
+    const getText = (id) => {
+        console.log(slides[id].texts)
+        if (slides && slides[id] && slides[id].texts) {
+            return slides[id].texts.map(t => [t.posX, t.posY, t.text, t.isRight, t.isTop]);
+        } else
+            return [];
+    };
 
-    if(currentEpisode === 0)
-        return <StartGame />;
+    const getInter = () => {
+        const id = (currentEpisode - 1) % 3;
+        if (slides && slides[id] && slides[id].interaction && slides[id].showInteraction && slides[id].interaction.id === interaction)
+            return <Interaction interaction={slides[id].interaction}/>;
+        return <div/>
+    };
 
-    return <div>
-        <div style={{margin: '1vh 5vw', paddingLeft: '85vw'}}>
-            <Button className="ant-btn" onClick={handleLogOut}>
-                <Icon style={{fontSize: '3vh'}} type="logout"/>
-            </Button>
+    return (<div style={{marginBottom: '10vh'}}>
+            {child&&child({slides, img:getImage, text:getText, onClick,reset})}
+            <div style={{marginRight: 50, float: "left"}}><Button onClick={reset}>Reset</Button></div>
+            {getInter()}
         </div>
-        <Demo isMobile={isMobile}/>
-        <br/>
-    </div>
+    );
+
 };
 
-
-export default withRouter(Game);
+export default Game

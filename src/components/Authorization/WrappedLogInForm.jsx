@@ -64,7 +64,7 @@ const LogInForm = (props) => {
                 })(<Input/>)}
             </Form.Item>
 
-            <Form.Item label="Password" hasFeedback>
+            <Form.Item label="Пароль" hasFeedback>
                 {getFieldDecorator('pwd', {
                     rules: [
                         {
@@ -79,10 +79,10 @@ const LogInForm = (props) => {
             <Form.Item {...tailFormItemLayout}>
                 <div>
                     <Button type="primary" htmlType="submit">
-                        LogIn
+                        Войти
                     </Button>
                     <Button style={{marginLeft: '1vw'}} onClick={() => props.history.push('/registration/')}>
-                        Register
+                        Регистрация
                         <Icon type="arrow-right" />
                     </Button>
                 </div>
