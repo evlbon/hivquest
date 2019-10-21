@@ -6,7 +6,6 @@ import {useGameState} from "../../context";
 
 const LogIn = (props) => {
     const {isAuthorize} = useGameState();
-    console.log(isAuthorize)
     isAuthorize && props.history.push('/game/');
 
     return <div className="regForm">

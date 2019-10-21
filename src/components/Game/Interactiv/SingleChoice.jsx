@@ -22,12 +22,10 @@ const SingleChoice = ({interaction}) => {
                 };
                 responseInteraction(token, value);
                 nextSlide(currentEpisode + 1);
-                console.log(ans)
             } else {
                 setDescription(JSON.parse(interaction.interactionDefinition))
             }
         }
-        console.log(description)
     };
 
     const getAns = () => {

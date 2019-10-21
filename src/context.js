@@ -70,9 +70,6 @@ export const GameContextProvider = ({children}) => {
     };
 
     const logOut = async () => {
-        console.log(localStorage.getItem('token'))
-
-        localStorage.removeItem('token');
 
         dispatch({
             type: 'LOG_OUT',

@@ -26,10 +26,8 @@ const DragAndDrop = ({interaction}) => {
                     'positive': state.ans2.map(a => a.id)}
 
             };
-            console.log(value)
             responseInteraction(token, value);
             nextSlide(currentEpisode + 1);
-            console.log(state)
         }
 
     };

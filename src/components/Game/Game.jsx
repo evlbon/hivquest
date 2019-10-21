@@ -26,7 +26,6 @@ const Game = ({child}) => {
                 if (r.data.length === 3)
                     setSlides(r.data);
                 getPoints(token);
-                console.log(r.data)
             }).catch(e => {
                 setSlides(undefined);
                 callbacks.error(e.message);
@@ -55,7 +54,6 @@ const Game = ({child}) => {
     };
 
     const getText = (id) => {
-        console.log(slides[id].texts)
         if (slides && slides[id] && slides[id].texts) {
             return slides[id].texts.map(t => [t.posX, t.posY, t.text, t.isRight, t.isTop]);
         } else

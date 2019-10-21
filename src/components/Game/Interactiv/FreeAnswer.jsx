@@ -18,8 +18,6 @@ const FreeAnswer = ({interaction}) => {
             };
             responseInteraction(token, value);
             nextSlide(currentEpisode + 1);
-            console.log(ans)
-            console.log(interaction)
         }
 
     };

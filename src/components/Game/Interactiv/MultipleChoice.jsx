@@ -16,15 +16,13 @@ const MultipleChoice = ({interaction}) => {
                 interactionId: interaction.id,
                 answers: getAns(),
             };
+            console.log(value);
             responseInteraction(token, value);
             nextSlide(currentEpisode+1);
-            console.log(ans,interaction)
         }
     };
 
-    const getAns = () => {
-        ans.map((a) => interaction.data[a])
-    };
+    const getAns = () => ans.map((a) => interaction.data[a]);
 
 
     return (

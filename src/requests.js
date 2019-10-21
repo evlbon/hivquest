@@ -48,8 +48,6 @@ const startGame = async (token) => {
 
 const getSlide = async (token, id) => {
     const endPoint = endpoints.getSlide;
-    console.log(id)
-    // console.log({previous: id - id%3, token});
 
     return axios({
         "method": "GET",

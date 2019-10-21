@@ -6,7 +6,6 @@ import DragAndDrop from "./DragAndDrop";
 
 const Interaction = ({interaction}) => {
     const type = interaction.type;
-    console.log(type)
 
     switch (type) {
         case('SINGLE_CHOICE'):
