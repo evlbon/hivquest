@@ -2,17 +2,22 @@ import {Modal, Button} from 'antd';
 import React, {useState} from "react";
 import {Radio, Input} from 'antd';
 import {useGameAction, useGameState} from "../../../context";
+import requests from "../../../requests";
 
 const FreeAnswer = ({interaction}) => {
 
-    const {nextSlide} = useGameAction();
-    const {currentEpisode} = useGameState();
-    const [visible, setVisible] = useState(true);
+    const {nextSlide, responseInteraction} = useGameAction();
+    const {currentEpisode, token} = useGameState();
     const [ans, setAns] = useState('');
 
     const handleOk = () => {
         if (ans !== '') {
-            nextSlide(currentEpisode+1);
+            const value = {
+                interactionId: interaction.id,
+                freeAnswer: ans,
+            };
+            responseInteraction(token, value);
+            nextSlide(currentEpisode + 1);
             console.log(ans)
             console.log(interaction)
         }

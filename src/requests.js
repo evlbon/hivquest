@@ -54,7 +54,7 @@ const getSlide = async (token, id) => {
     return axios({
         "method": "GET",
         "url": endPoint,
-        params: {previous: id - id%3},
+        params: {previous: id - id % 3},
         headers: {
             'Content-Type': 'application/json',
             token,
@@ -88,8 +88,27 @@ const cities = async (value) => {
     })
 };
 
+const responseInteraction = (token, value) => {
+    const endPoint = endpoints.responseInteraction;
+    // const body = JSON.stringify(value);
+
+    let ans = 0;
+
+    axios({
+        "method": "POST",
+        "url": endPoint,
+        "data": value,
+        headers: {
+            'Content-Type': 'application/json',
+            token,
+        },
+    }).then(r => {ans =1 }).catch(e => callbacks.error(e.message));
+
+    return ans
+};
+
 const requests = {
-    login, registration, cities, startGame, getSlide,getUser
+    login, registration, cities, startGame, getSlide, getUser, responseInteraction
 };
 
 export default requests;

@@ -16,7 +16,7 @@ function randomColor() {
 const Game = ({child}) => {
     const [slides, setSlides] = useState();
     const [interaction, setInteraction] = useState(0);
-    const {nextSlide} = useGameAction();
+    const {nextSlide, getPoints} = useGameAction();
     const {currentEpisode, token} = useGameState();
 
     useEffect(() => {
@@ -25,6 +25,7 @@ const Game = ({child}) => {
                 setInteraction(0);
                 if (r.data.length === 3)
                     setSlides(r.data);
+                getPoints(token);
                 console.log(r.data)
             }).catch(e => {
                 setSlides(undefined);
@@ -70,7 +71,7 @@ const Game = ({child}) => {
 
     return (<div style={{marginBottom: '10vh'}}>
             {child&&child({slides, img:getImage, text:getText, onClick,reset})}
-            <div style={{marginRight: 50, float: "left"}}><Button onClick={reset}>Reset</Button></div>
+            <div style={{marginRight: 50,marginTop: 80, float: "left"}}><Button style={{background:'rgb(26, 52, 126)'}} onClick={reset}>Reset</Button></div>
             {getInter()}
         </div>
     );

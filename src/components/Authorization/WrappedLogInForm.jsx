@@ -78,10 +78,10 @@ const LogInForm = (props) => {
 
             <Form.Item {...tailFormItemLayout}>
                 <div>
-                    <Button type="primary" htmlType="submit">
+                    <Button htmlType="submit">
                         Войти
                     </Button>
-                    <Button style={{marginLeft: '1vw'}} onClick={() => props.history.push('/registration/')}>
+                    <Button type="primary" style={{marginLeft: '1vw'}} onClick={() => props.history.push('/registration/')}>
                         Регистрация
                         <Icon type="arrow-right" />
                     </Button>

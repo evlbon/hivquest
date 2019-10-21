@@ -11,6 +11,7 @@ const endpoints = {
 
     startGame: `${gameUrl}/start_game`,
     getSlide: `${gameUrl}/slide`,
+    responseInteraction: `${gameUrl}/response_interaction`,
 };
 
 export default endpoints;

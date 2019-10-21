@@ -2,33 +2,30 @@ import { Modal, Button } from 'antd';
 import React, {useState} from "react";
 import { Checkbox, Input } from 'antd';
 import {useGameAction, useGameState} from "../../../context";
+import requests from "../../../requests";
 
 const MultipleChoice = ({interaction}) => {
 
-    const {nextSlide} = useGameAction();
-    const {currentEpisode} = useGameState();
+    const {nextSlide, responseInteraction} = useGameAction();
+    const {currentEpisode, token} = useGameState();
     const [ans, setAns] = useState([]);
 
     const handleOk = () => {
         if(ans.length){
+            const value = {
+                interactionId: interaction.id,
+                answers: getAns(),
+            };
+            responseInteraction(token, value);
             nextSlide(currentEpisode+1);
-            console.log(ans)
+            console.log(ans,interaction)
         }
-
     };
 
-    console.log(ans);
-    const radioStyle = {
-        display: 'block',
-        height: '30px',
-        lineHeight: '30px',
+    const getAns = () => {
+        ans.map((a) => interaction.data[a])
     };
 
-    const choose = (v,id) => {
-        const a = [...ans];
-        a[id] = v;
-        setAns(a);
-    };
 
     return (
         <div>

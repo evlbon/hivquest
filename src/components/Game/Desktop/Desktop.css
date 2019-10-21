@@ -1,15 +1,17 @@
 .grid{
     width: 30vw;
     height: 53vw;
+    max-height: 80vh;
+    max-width: 45vh;
     background: antiquewhite no-repeat;
     background-size: cover;
 }
 
 .dCell{
     height: calc(53vw/16);
-    /*max-height: 9vh;*/
+    max-height: calc(80vh/16);
     width: calc(30vw/9);
-    /*max-width: 5.0625vh;*/
+    max-width: calc(45vh/9);
     vertical-align: top;
     /*border: 1px solid aqua;*/
     display: inline-block;
@@ -18,8 +20,8 @@
 .dSlide{
     width: 30vw;
     height: 53vw;
-    /*max-height: 90vh;*/
-    /*max-width: 50.625vh;*/
+    max-height: 80vh;
+    max-width: 45vh;
     background: no-repeat;
     background-size: cover;
     overflow: hidden;
@@ -30,10 +32,11 @@
     padding: 3px;
     background: white;
     width: 30vw;
-    /*max-width: 50.625vh;*/
+    max-width: 45vh;
+
     height: 13vw;
     /*height: 6vw;*/
-    font-size: 1.5vw
+    font-size: 1.2vw
 
     /*font-size: calc(1rem + 1.23vw)*/
 }
@@ -41,15 +44,15 @@
     padding: 3px;
     background: rgba(104,82,143,0.76);
     width: 30vw;
-    /*max-width: 50.625vh;*/
+    max-width: 45vh;
     height: 13vw;
-    font-size: 1.2vw;
+    font-size: 1vw;
 }
 .dAuthorTextS{
      padding: 3px;
      background: white;
      width: 30vw;
-     /*max-width: 50.625vh;*/
+    max-width: 45vh;
      height: 13vw;
      font-size: 0.8vw;
  }
@@ -58,7 +61,7 @@
     padding: 3px;
     background: white;
     width: 30vw;
-    /*max-width: 50.625vh;*/
+    max-width: 45vh;
     height: 13vw;
     font-size: 0.6vw;
 }
@@ -81,6 +84,8 @@
     position: absolute;
     max-width: 20vw;
     font-size: 0.8vw;
+    /*bottom: 0;*/
+    /*right: 0;*/
 
     background: url('/left.png') no-repeat;
     background-size: 100% 100%;
@@ -91,7 +96,7 @@
     text-align: center;
     padding: 2vw 1vw 1vh 1vw;
     position: absolute;
-    max-width: 20vw;
+    max-width: 18vw;
     font-size: 0.8vw;
 
     background: url('/right_top.png') no-repeat;
@@ -103,7 +108,7 @@
     text-align: center;
     padding: 2vw 1vw 1vh 1vw;
     position: absolute;
-    max-width: 20vw;
+    max-width: 18vw;
     font-size: 0.8vw;
 
     background: url('/left_top.png') no-repeat;

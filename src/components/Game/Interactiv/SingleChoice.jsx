@@ -2,18 +2,25 @@ import {Modal, Button} from 'antd';
 import React, {useState} from "react";
 import {Radio, Input} from 'antd';
 import {useGameAction, useGameState} from "../../../context";
+import requests from "../../../requests";
 
 const SingleChoice = ({interaction}) => {
 
-    const {nextSlide} = useGameAction();
-    const {currentEpisode} = useGameState();
+    const {nextSlide, responseInteraction} = useGameAction();
+    const {currentEpisode,token} = useGameState();
     const [description, setDescription] = useState();
     const [ans, setAns] = useState(interaction.data.map(() => 0));
 
     const handleOk = () => {
-        console.log(JSON.parse(interaction.interactionDefinition));
         if (ans.indexOf(0) === -1) {
-            if (description ) {
+            if (description) {
+                const answers = getAns();
+
+                const value = {
+                    interactionId: interaction.id,
+                    answers: answers,
+                };
+                responseInteraction(token, value);
                 nextSlide(currentEpisode + 1);
                 console.log(ans)
             } else {
@@ -21,6 +28,15 @@ const SingleChoice = ({interaction}) => {
             }
         }
         console.log(description)
+    };
+
+    const getAns = () => {
+        const answers = ans.map((a,aid) => {
+            let text = '';
+            interaction.data[aid].answers.map(i => {if(i.first===a) text=i.second});
+            return {id:a,answer:text}
+        });
+        return answers;
     };
 
 

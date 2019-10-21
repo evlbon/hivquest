@@ -110,21 +110,31 @@ export const GameContextProvider = ({children}) => {
                 payload: {token, gender, name, currentEpisode: parseInt(currentEpisode), points},
             });
         }
-
-
-
-        // if (token && token !== 'undefined') {
-        //     requests.getUser(token).then(r => {
-        //         const {gender, name, currentEpisode, points} = r.data;
-        //         dispatch({
-        //             type: 'RECEIVE_ACCESS_TOKEN',
-        //             payload: {token, gender, name, currentEpisode: parseInt(currentEpisode)+1, points},
-        //         })
-        //     });
-        // }
+        if (token && token !== 'undefined') {
+            requests.getUser(token).then(r => {
+                dispatch({
+                    type: 'RECEIVE_ACCESS_TOKEN',
+                    payload: { points: r.data.points},
+                })
+            });
+        }
     };
 
-    const actions = {registration, logIn, logOut, getUser, checkAuth, nextSlide};
+    const responseInteraction = (token,value) => {
+        requests.responseInteraction(token, value);
+        getPoints(token);
+    };
+
+    const getPoints = (token) => {
+        requests.getUser(token).then(r => {
+            dispatch({
+                type: 'RECEIVE_ACCESS_TOKEN',
+                payload: { points: r.data.points},
+            })
+        });
+    };
+
+    const actions = {registration, logIn, logOut, getUser, checkAuth, nextSlide, responseInteraction, getPoints};
 
     return (
         <GameContext.Provider value={{state, actions}}>

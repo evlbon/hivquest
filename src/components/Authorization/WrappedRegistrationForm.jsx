@@ -284,12 +284,12 @@ const RegistrationForm = (props) => {
 
             <Form.Item {...tailFormItemLayout}>
                 <div>
-                    <Button style={{marginRight: '1vw'}} onClick={() => props.history.push('/login/')}>
+                    <Button type="primary" style={{marginRight: '1vw'}} onClick={() => props.history.push('/login/')}>
                         <Icon type="arrow-left"/>
                         Вход
                     </Button>
 
-                    <Button type="primary" htmlType="submit">
+                    <Button htmlType="submit">
                         Зарегистрироваться
                     </Button>
                 </div>
