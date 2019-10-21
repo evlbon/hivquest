@@ -36,7 +36,7 @@
 
     height: 13vw;
     /*height: 6vw;*/
-    font-size: 1.2vw
+    font-size: calc(0.5vw + 1vh);
 
     /*font-size: calc(1rem + 1.23vw)*/
 }
@@ -46,7 +46,7 @@
     width: 30vw;
     max-width: 45vh;
     height: 13vw;
-    font-size: 1vw;
+    font-size: calc(0.3vw + 0.9vh);
 }
 .dAuthorTextS{
      padding: 3px;
@@ -54,7 +54,7 @@
      width: 30vw;
     max-width: 45vh;
      height: 13vw;
-     font-size: 0.8vw;
+     font-size: calc(0.2vw + 0.8vh);
  }
 
 .dAuthorTextXS{
@@ -63,15 +63,15 @@
     width: 30vw;
     max-width: 45vh;
     height: 13vw;
-    font-size: 0.6vw;
+    font-size: calc(0.2vw + 0.6vh);
 }
 
 .dRight-bubble {
     text-align: center;
     padding: 1vh 1vw 5vh 1vw;
     position: absolute;
-    max-width: 20vw;
-    font-size: 0.8vw;
+    max-width: 18vw;
+    font-size: calc(0.5vw + 0.3vh);
 
     background: url('/right.png') no-repeat;
     background-size: 100% 100%;
@@ -83,7 +83,7 @@
     padding: 1vh 1vw 5vh 1vw;
     position: absolute;
     max-width: 20vw;
-    font-size: 0.8vw;
+    font-size: calc(0.5vw + 0.3vh);
     /*bottom: 0;*/
     /*right: 0;*/
 
@@ -97,7 +97,7 @@
     padding: 2vw 1vw 1vh 1vw;
     position: absolute;
     max-width: 18vw;
-    font-size: 0.8vw;
+    font-size: calc(0.5vw + 0.3vh);
 
     background: url('/right_top.png') no-repeat;
     background-size: 100% 100%;
@@ -109,7 +109,7 @@
     padding: 2vw 1vw 1vh 1vw;
     position: absolute;
     max-width: 18vw;
-    font-size: 0.8vw;
+    font-size: calc(0.5vw + 0.3vh);
 
     background: url('/left_top.png') no-repeat;
     background-size: 100% 100%;

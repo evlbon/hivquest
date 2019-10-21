@@ -14,6 +14,8 @@ const SingleChoice = ({interaction}) => {
     const handleOk = () => {
         if (ans.indexOf(0) === -1) {
             if (description) {
+                nextSlide(currentEpisode + 1);
+            } else {
                 const answers = getAns();
 
                 const value = {
@@ -21,8 +23,6 @@ const SingleChoice = ({interaction}) => {
                     answers: answers,
                 };
                 responseInteraction(token, value);
-                nextSlide(currentEpisode + 1);
-            } else {
                 setDescription(JSON.parse(interaction.interactionDefinition))
             }
         }

@@ -54,8 +54,7 @@ export const GameContextProvider = ({children}) => {
             })
 
         } catch (error) {
-            callbacks.error(error.response.status === 400?
-                'Данные введены не верно или аккаунт не зарегистрирован':error.message)
+            callbacks.error('Данные введены не верно или аккаунт не зарегистрирован')
         }
     };
 
@@ -70,7 +69,7 @@ export const GameContextProvider = ({children}) => {
     };
 
     const logOut = async () => {
-
+        localStorage.removeItem('token');
         dispatch({
             type: 'LOG_OUT',
         })
@@ -94,8 +93,8 @@ export const GameContextProvider = ({children}) => {
     };
 
     const checkAuth = () => {
-        const token = localStorage.getItem('token');
 
+        const token = localStorage.getItem('token');
         const gender = localStorage.getItem('gender');
         const name = localStorage.getItem('name');
         const currentEpisode = localStorage.getItem('currentEpisode');

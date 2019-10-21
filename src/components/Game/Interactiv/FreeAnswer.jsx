@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {Radio, Input} from 'antd';
 import {useGameAction, useGameState} from "../../../context";
 import requests from "../../../requests";
-
+const { TextArea } = Input;
 const FreeAnswer = ({interaction}) => {
 
     const {nextSlide, responseInteraction} = useGameAction();
@@ -33,7 +33,7 @@ const FreeAnswer = ({interaction}) => {
                 closable={false}
                 footer={<Button onClick={handleOk}>Ok</Button>}
             >
-                <Input value={ans} onChange={onChange}/>
+                <TextArea rows={5} value={ans} onChange={onChange}/>
             </Modal>
         </div>
     );

@@ -27,7 +27,7 @@ const StartGame = () => {
                     type="primary"
                     onClick={handleStart}
                 >
-                    Start GAME
+                    Начать игру
                 </Button>
             </div>
         </div>

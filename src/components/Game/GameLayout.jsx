@@ -5,6 +5,7 @@ import {Button, Icon} from "antd";
 import StartGame from './Start';
 import Mobile from "./Mobile/Mobile";
 import Desktop from "./Desktop/Desktop";
+import FinishGame from "./Finish";
 
 const GameLayout = (props) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 576);
@@ -26,6 +27,9 @@ const GameLayout = (props) => {
 
     if(currentEpisode === 0)
         return <StartGame />;
+
+    if(currentEpisode >= 60)
+        return <FinishGame />;
 
     return <div>
         <div style={{margin: '1vh 5vw', paddingLeft: '85vw'}}>

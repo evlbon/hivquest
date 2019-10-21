@@ -9,16 +9,24 @@ const Slide = ({img, style, order, speech, authorText}) => {
     }, [speech]);
 
     const getBalloons = () => {
-        return speech.map((b, bid) => (
-            [b[0], b[1], b[3] ?
+        // const o = {};
+        // speech.forEach((b, bid) => {
+        //     order[`${b[0]}${b[1]}`] = bid;
+        // });
+        //
+
+        return speech.map((b, bid) => {
+            const animationDelay = `${6*order+6/speech.length*bid}s`;
+
+            return [b[0], b[1], b[3] ?
                 b[4] ?
-                    <Balloon.Right.Top text={b[2]} slide={order} order={bid} style={style}/> :
-                    <Balloon.Right text={b[2]} slide={order} order={bid} style={style}/> :
+                    <Balloon.Right.Top text={b[2]} slide={order} order={bid} style={style} animationDelay={animationDelay}/> :
+                    <Balloon.Right text={b[2]} slide={order} order={bid} style={style} animationDelay={animationDelay}/> :
                 b[4] ?
-                    <Balloon.Left.Top text={b[2]} slide={order} order={bid} style={style}/>
+                    <Balloon.Left.Top text={b[2]} slide={order} order={bid} style={style} animationDelay={animationDelay}/>
                     :
-                    <Balloon.Left text={b[2]} slide={order} order={bid} style={style}/>]
-        ))
+                    <Balloon.Left text={b[2]} slide={order} order={bid} style={style} animationDelay={animationDelay}/>]
+        })
     };
 
 
