@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useGameAction, useGameState} from "../../context";
-import {Button, Icon} from "antd";
+import {Button, Checkbox, Icon} from "antd";
+import {Link} from "react-router-dom";
 
 const FinishGame = () => {
 
@@ -24,6 +25,11 @@ const FinishGame = () => {
                 >
                     <h1 style={{ color: '#ffe45a'}}><b>Конец игры</b></h1>
                     вы набрали <span style={{color:'red'}}>{points}</span> очков
+
+
+                    <div style={{fontSize: 'medium', textAlign: 'center', color: '#ffe45a'}}>
+                        Я согласен с <Link to="/registration/s/" target="_blank">условиями</Link>
+                    </div>
                 </div>
             </div>
         </div>

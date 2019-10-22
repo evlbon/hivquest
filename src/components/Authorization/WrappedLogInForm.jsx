@@ -7,7 +7,6 @@ import {
     Icon,
 } from 'antd';
 import {useGameAction} from "../../context";
-import callbacks from "../../callbacks";
 
 const LogInForm = (props) => {
     const {getFieldDecorator} = props.form;
@@ -54,11 +53,11 @@ const LogInForm = (props) => {
                     rules: [
                         {
                             type: 'email',
-                            message: 'The input is not valid E-mail!',
+                            message: 'Введен некорректный E-mail!',
                         },
                         {
                             required: true,
-                            message: 'Please input your E-mail!',
+                            message: 'Пожалуйста введите ваш E-mail',
                         },
                     ],
                 })(<Input/>)}
@@ -69,7 +68,7 @@ const LogInForm = (props) => {
                     rules: [
                         {
                             required: true,
-                            message: 'Please input your password!',
+                            message: 'Пожалуйста введите пароль!',
                         },
                     ],
                 })(<Input.Password/>)}

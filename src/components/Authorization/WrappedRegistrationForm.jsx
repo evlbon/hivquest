@@ -74,7 +74,7 @@ const RegistrationForm = (props) => {
     const compareToFirstPassword = (rule, value, callback) => {
         const {form} = props;
         if (value && value !== form.getFieldValue('pwd')) {
-            callback('Two passwords that you enter is inconsistent!');
+            callback('Пароли не совпадают!');
         } else {
             callback();
         }
@@ -88,12 +88,12 @@ const RegistrationForm = (props) => {
         callback();
     };
     const validateUCPA = (rule, value, callback) => {
-        !value ? callback('Check it') : callback();
+        !value ? callback('Должно быть отмеченно') : callback();
     };
 
     const validateAddress = (rule, value, callback) => {
         if (value && !autoCompleteResult.find(v => value === v)) {
-            callback('Choose correct');
+            callback('Выберите верный');
         } else {
             callback();
         }
@@ -103,7 +103,7 @@ const RegistrationForm = (props) => {
         if (/^[0-9]+$/.test(value))
             callback();
         else
-            callback('Should consist only numbers')
+            callback('Должен содержать только цифры')
     }
 
     const handleAddressChange = async value => {
@@ -163,11 +163,11 @@ const RegistrationForm = (props) => {
                     rules: [
                         {
                             type: 'email',
-                            message: 'The input is not valid E-mail!',
+                            message: 'Введен некорректный E-mail!',
                         },
                         {
                             required: true,
-                            message: 'Please input your E-mail!',
+                            message: 'Пожалуйста введите ваш E-mail',
                         },
                     ],
                 })(<Input/>)}
@@ -178,7 +178,7 @@ const RegistrationForm = (props) => {
                     rules: [
                         {
                             required: true,
-                            message: 'Please input your password!',
+                            message: 'Пожалуйста введите пароль!',
                         },
                         {
                             validator: validateToNextPassword,
@@ -192,7 +192,7 @@ const RegistrationForm = (props) => {
                     rules: [
                         {
                             required: true,
-                            message: 'Please confirm your password!',
+                            message: 'Пожалуйста подтвердите пароль!',
                         },
                         {
                             validator: compareToFirstPassword,
