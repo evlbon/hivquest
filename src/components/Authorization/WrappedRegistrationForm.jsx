@@ -139,7 +139,6 @@ const RegistrationForm = (props) => {
     })(
         <Select style={{width: 70}}>
             <Option value="+7">+7</Option>
-            <Option value="87">+87</Option>
         </Select>,
     );
 
@@ -151,13 +150,13 @@ const RegistrationForm = (props) => {
     return (
         <Form {...formItemLayout} onSubmit={handleSubmit}>
 
-            <Form.Item
-                label='Логин'
-            >
-                {getFieldDecorator('login', {
-                    rules: [{required: true, message: 'Please input your login!', whitespace: true}],
-                })(<Input/>)}
-            </Form.Item>
+            {/*<Form.Item*/}
+            {/*    label='Логин'*/}
+            {/*>*/}
+            {/*    {getFieldDecorator('login', {*/}
+            {/*        rules: [{required: true, message: 'Please input your login!', whitespace: true}],*/}
+            {/*    })(<Input/>)}*/}
+            {/*</Form.Item>*/}
 
             <Form.Item label="E-mail">
                 {getFieldDecorator('email', {
@@ -206,7 +205,7 @@ const RegistrationForm = (props) => {
                 label='Имя'
             >
                 {getFieldDecorator('name', {
-                    rules: [{required: true, message: 'Please input your first name!', whitespace: true}],
+                    rules: [{required: true, message: 'Пожалуйста введите ваше имя!', whitespace: true}],
                 })(<Input/>)}
             </Form.Item>
 
@@ -214,7 +213,7 @@ const RegistrationForm = (props) => {
                 label='Фамилия'
             >
                 {getFieldDecorator('familyName', {
-                    rules: [{required: true, message: 'Please input your last name!', whitespace: true}],
+                    rules: [{required: true, message: 'Пожалуйста введите вашу фамилию!', whitespace: true}],
                 })(<Input/>)}
             </Form.Item>
 
@@ -222,20 +221,20 @@ const RegistrationForm = (props) => {
                 label='Отчество'
             >
                 {getFieldDecorator('patronymic', {
-                    rules: [{required: true, message: 'Please input your patronymic!', whitespace: true}],
+                    rules: [{required: true, message: 'Пожалуйста введите ваше отчество!', whitespace: true}],
                 })(<Input/>)}
             </Form.Item>
 
             <Form.Item label="Телефон">
                 {getFieldDecorator('phone', {
-                    rules: [{required: true, message: 'Please input your phone number!'}, {
+                    rules: [{required: true, message: 'Пожалуйста введите ваш номер телефона!'}, {
                         validator: validatePhone,
                     }],
                 })(<Input addonBefore={prefixSelector} style={{width: '100%'}}/>)}
             </Form.Item>
 
             <Form.Item label="Пол">
-                {getFieldDecorator('gender', {rules: [{required: true, message: 'Please choose your gender'}]})(
+                {getFieldDecorator('gender', {rules: [{required: true, message: 'Пожалуйста вберите пол!'}]})(
                     <Radio.Group>
                         <Radio.Button value={1}>Мужской</Radio.Button>
                         <Radio.Button value={0}>Женский</Radio.Button>
@@ -244,10 +243,10 @@ const RegistrationForm = (props) => {
             </Form.Item>
 
             <Form.Item
-                label='Адрес'
+                label='Ваш населённый пункт'
             >
                 {getFieldDecorator('fullAddress', {
-                    rules: [{required: true, message: 'Please input your address!', whitespace: true}, {
+                    rules: [{required: true, message: 'Пожалуйста введите ваш населенный пункт!', whitespace: true}, {
                         validator: validateAddress,
                     }],
                 })(<AutoComplete
@@ -262,10 +261,10 @@ const RegistrationForm = (props) => {
 
 
             <Form.Item
-                label='Информация об образовании'
+                label='Ваше учебное заведение'
             >
                 {getFieldDecorator('educationInfo', {
-                    rules: [{required: true, message: 'Please input your education info!', whitespace: true}],
+                    rules: [{required: true, message: 'Пожалуйста введите ваше учебное заведение!', whitespace: true}],
                 })(<Input/>)}
             </Form.Item>
 
