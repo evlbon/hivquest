@@ -21,7 +21,7 @@ const Game = ({child}) => {
     const {currentEpisode, token} = useGameState();
 
     useEffect(() => {
-        if (currentEpisode)
+        if (currentEpisode){
             requests.getSlide(token, currentEpisode + 2).then(r => {
                 setInteraction(0);
                 if (r.data.length === 3)
@@ -40,6 +40,8 @@ const Game = ({child}) => {
                 setSlides(undefined);
                 callbacks.error(e.message);
             });
+        }
+
     }, [currentEpisode]);
 
     const onClick = () => {
@@ -84,7 +86,7 @@ const Game = ({child}) => {
 
             <div style={{visibility: 'hidden'}}>
                 {slides2&&slides2.map(s=>(
-                    <img src = {s.imageLink}/>
+                    <img src = {s.imageLink} key={s.imageLink}/>
                 ))}
             </div>
         </div>

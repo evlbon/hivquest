@@ -11,11 +11,13 @@ const GameLayout = (props) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 576);
     const {logOut} = useGameAction();
     const {isAuthorize, currentEpisode, token} = useGameState();
+    const state = useGameState();
 
     useEffect(() => {
         !isAuthorize && props.history.push('/login/');
         const handleResize = () => setIsMobile(window.innerWidth < 576);
         window.addEventListener('resize', handleResize);
+        console.log(state)
         return () => {
             window.removeEventListener('resize', handleResize);
         };
@@ -25,21 +27,22 @@ const GameLayout = (props) => {
         logOut();
     };
 
-    if(currentEpisode === 0)
-        return <StartGame />;
+    if (currentEpisode > 0 && currentEpisode < 60)
+        return <div>
+            <div style={{margin: '1vh 5vw', paddingLeft: '85vw'}}>
+                <Button className="ant-btn" onClick={handleLogOut}>
+                    <Icon style={{fontSize: '3vh'}} type="logout"/>
+                </Button>
+            </div>
+            {isMobile ? <Mobile/> : <Desktop/>}
+            <br/>
+        </div>;
+    else if (currentEpisode >= 60)
+        return <FinishGame/>;
+    else
+        return <StartGame/>;
 
-    if(currentEpisode >= 60)
-        return <FinishGame />;
 
-    return <div>
-        <div style={{margin: '1vh 5vw', paddingLeft: '85vw'}}>
-            <Button className="ant-btn" onClick={handleLogOut}>
-                <Icon style={{fontSize: '3vh'}} type="logout"/>
-            </Button>
-        </div>
-        {isMobile? <Mobile/>:<Desktop/>}
-        <br/>
-    </div>
 };
 
 

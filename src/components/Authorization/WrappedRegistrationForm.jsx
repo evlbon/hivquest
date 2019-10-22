@@ -234,7 +234,7 @@ const RegistrationForm = (props) => {
             </Form.Item>
 
             <Form.Item label="Пол">
-                {getFieldDecorator('gender', {rules: [{required: true, message: 'Пожалуйста вберите пол!'}]})(
+                {getFieldDecorator('gender', {rules: [{required: true, message: 'Пожалуйста выберите пол!'}]})(
                     <Radio.Group>
                         <Radio.Button value={1}>Мужской</Radio.Button>
                         <Radio.Button value={0}>Женский</Radio.Button>

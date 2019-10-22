@@ -9,37 +9,37 @@ const Balloon = ({text, slide, order, style}) => {
     )
 };
 
-Balloon.Right = ({text, slide, order, style, animationDelay}) => {
+Balloon.Right = ({text, style, animationDelay}) => {
 
     return(
-        <div className={`${style}Right-bubble anim-show`} style={{animationDelay}}>
+        <div className={`${style}Right-bubble anim-show`} style={animationDelay}>
             {text}
         </div>
     )
 };
 
-Balloon.Left = ({text, slide, order, style, animationDelay}) => {
+Balloon.Left = ({text, style, animationDelay}) => {
 
     return(
-        <div className={`${style}Left-bubble anim-show`} style={{animationDelay}}>
+        <div className={`${style}Left-bubble anim-show`} style={animationDelay}>
             {text}
         </div>
     )
 };
 
-Balloon.Right.Top = ({text, slide, order, style, animationDelay}) => {
+Balloon.Right.Top = ({text, style, animationDelay}) => {
 
     return(
-        <div className={`${style}Right-bubble-top anim-show`} style={{animationDelay}}>
+        <div className={`${style}Right-bubble-top anim-show`} style={animationDelay}>
             {text}
         </div>
     )
 };
 
-Balloon.Left.Top = ({text, slide, order, style, animationDelay}) => {
+Balloon.Left.Top = ({text, style, animationDelay}) => {
 
     return(
-        <div className={`${style}Left-bubble-top anim-show`} style={{animationDelay}}>
+        <div className={`${style}Left-bubble-top anim-show`} style={animationDelay}>
             {text}
         </div>
     )

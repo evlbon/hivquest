@@ -9,14 +9,12 @@ const Slide = ({img, style, order, speech, authorText}) => {
     }, [speech]);
 
     const getBalloons = () => {
-        // const o = {};
-        // speech.forEach((b, bid) => {
-        //     order[`${b[0]}${b[1]}`] = bid;
-        // });
-        //
-
         return speech.map((b, bid) => {
-            const animationDelay = `${6*order+6/speech.length*bid}s`;
+            const animationDelay = {
+                animationDelay:`${6*order+6/speech.length*bid}s`,
+                paddingTop: `${b[2].length>200?2*b[2].length/200:2}vw`
+
+            };
 
             return [b[0], b[1], b[3] ?
                 b[4] ?
