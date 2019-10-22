@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {
     Form,
     Input,
@@ -276,7 +276,7 @@ const RegistrationForm = (props) => {
                     valuePropName: 'checked',
                 })(
                     <Checkbox style={{color:'#ffe45a'}}>
-                        Я согласен с <a href="">условиями</a>
+                        Я согласен с <Link to="/registration/s/" target="_blank">условиями</Link>
                     </Checkbox>,
                 )}
             </Form.Item>

@@ -5,6 +5,7 @@ import Registration from "./components/Authorization/Registartion";
 import LogIn from "./components/Authorization/LogIn";
 import GameLayout from "./components/Game/GameLayout";
 import Main from "./components/Main";
+import Sogl from "./components/Sogl";
 
 const BaseRouter = () => (
     <div>
@@ -12,6 +13,7 @@ const BaseRouter = () => (
         <Route exact path='/registration/' component={Registration} />
         <Route exact path='/login/' component={LogIn} />
         <Route exact path='/game/' component={GameLayout} />
+        <Route exact path='/registration/s/' component={Sogl} />
     </div>
 );
 

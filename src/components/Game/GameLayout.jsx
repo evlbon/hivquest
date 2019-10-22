@@ -27,7 +27,7 @@ const GameLayout = (props) => {
         logOut();
     };
 
-    if (currentEpisode > 0 && currentEpisode < 60)
+    if (currentEpisode > 0 && currentEpisode < 64)
         return <div>
             <div style={{margin: '1vh 5vw', paddingLeft: '85vw'}}>
                 <Button className="ant-btn" onClick={handleLogOut}>
@@ -37,7 +37,7 @@ const GameLayout = (props) => {
             {isMobile ? <Mobile/> : <Desktop/>}
             <br/>
         </div>;
-    else if (currentEpisode >= 60)
+    else if (currentEpisode >= 64)
         return <FinishGame/>;
     else
         return <StartGame/>;
