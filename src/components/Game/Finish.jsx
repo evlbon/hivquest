@@ -28,7 +28,7 @@ const FinishGame = () => {
 
 
                     <div style={{fontSize: 'medium', textAlign: 'center', color: '#ffe45a'}}>
-                        Я согласен с <Link to="/registration/s/" target="_blank">условиями</Link>
+                        здесь можно увидеть <Link to="/registration/s/" target="_blank">правила</Link>
                     </div>
                 </div>
             </div>
