@@ -28,7 +28,8 @@ const Game = ({child}) => {
                     setSlides2(r.data);
             }).catch(e => {
                 setSlides2(undefined);
-                callbacks.error(e.message);
+                if (e.response.data.message)
+                    callbacks.error(e.response.data.message)
             });
 
             requests.getSlide(token, currentEpisode - 1).then(r => {
@@ -39,7 +40,8 @@ const Game = ({child}) => {
                 getPoints(token);
             }).catch(e => {
                 setSlides(undefined);
-                callbacks.error(e.message);
+                if (e.response.data.message)
+                    callbacks.error(e.response.data.message)
             });
         }
 

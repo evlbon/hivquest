@@ -50,7 +50,7 @@ export const GameContextProvider = ({children}) => {
 
             dispatch({
                 type: 'RECEIVE_ACCESS_TOKEN',
-                payload: {token, gender, name, currentEpisode: parseInt(currentEpisode+1), points},
+                payload: {token, gender, name, currentEpisode: parseInt(currentEpisode + 1), points},
             })
 
         } catch (error) {
@@ -64,7 +64,8 @@ export const GameContextProvider = ({children}) => {
             callbacks.success('Success');
             callback();
         } catch (e) {
-            callbacks.error(e.message)
+            if (e.response.data.message)
+                callbacks.error(e.response.data.message)
         }
     };
 
@@ -110,13 +111,23 @@ export const GameContextProvider = ({children}) => {
             requests.getUser(token).then(r => {
                 dispatch({
                     type: 'RECEIVE_ACCESS_TOKEN',
-                    payload: { points: r.data.points},
+                    payload: {points: r.data.points},
                 })
+            }).catch(e => {
+                try {
+                    console.log(e.response)
+                    callbacks.error(e.response.data.response.message)
+                    if(e.response.status === 401)
+                        logOut()
+                }
+                catch (e) {
+                    console.log(e.message)
+                }
             });
         }
     };
 
-    const responseInteraction = (token,value) => {
+    const responseInteraction = (token, value) => {
         requests.responseInteraction(token, value);
         getPoints(token);
     };
@@ -125,7 +136,7 @@ export const GameContextProvider = ({children}) => {
         requests.getUser(token).then(r => {
             dispatch({
                 type: 'RECEIVE_ACCESS_TOKEN',
-                payload: { points: r.data.points},
+                payload: {points: r.data.points},
             })
         });
     };
