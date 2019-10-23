@@ -105,8 +105,21 @@ const responseInteraction = (token, value) => {
     return ans
 };
 
+const finishGame = async (token) => {
+    const endPoint = endpoints.finishGame;
+
+    return axios({
+        "method": "POST",
+        "url": endPoint,
+        headers: {
+            'Content-Type': 'application/json',
+            token,
+        },
+    })
+};
+
 const requests = {
-    login, registration, cities, startGame, getSlide, getUser, responseInteraction
+    login, registration, cities, startGame, getSlide, getUser, responseInteraction,finishGame
 };
 
 export default requests;

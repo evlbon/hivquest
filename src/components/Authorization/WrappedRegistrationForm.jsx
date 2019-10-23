@@ -55,7 +55,6 @@ const RegistrationForm = (props) => {
             if (!err) {
                 const changed = {
                     ucpa: values.ucpa ? 1 : 0,
-                    fullAddress: autoCompleteIndexes[values.fullAddress],
                     phone: `${values.prefix}${values.phone}`
                 };
                 console.log('Received values of form: ', {...values, ...changed});
@@ -246,16 +245,8 @@ const RegistrationForm = (props) => {
                 label='Ваш населённый пункт'
             >
                 {getFieldDecorator('fullAddress', {
-                    rules: [{required: true, message: 'Пожалуйста введите ваш населенный пункт!', whitespace: true}, {
-                        validator: validateAddress,
-                    }],
-                })(<AutoComplete
-                        dataSource={addressOptions}
-                        onChange={handleAddressChange}
-                        placeholder="Город"
-                    >
-                        <Input/>
-                    </AutoComplete>
+                    rules: [{required: true, message: 'Пожалуйста введите ваш населенный пункт!', whitespace: true}],
+                })(<Input/>
                 )}
             </Form.Item>
 

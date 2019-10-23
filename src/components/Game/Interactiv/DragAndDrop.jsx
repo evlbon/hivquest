@@ -11,6 +11,8 @@ const DragAndDrop = ({interaction}) => {
     const {nextSlide, responseInteraction} = useGameAction();
     const {currentEpisode, token} = useGameState();
 
+    const [description, setDescription] = useState();
+
     const [state, setState] = useState({
         ans1: [],
         ans2: [],
@@ -19,15 +21,24 @@ const DragAndDrop = ({interaction}) => {
 
     const handleOk = () => {
         if (state.all.length === 0) {
-            const value = {
-                interactionId: interaction.id,
-                dragDropAnswers: {
-                    'negative': state.ans1.map(a => a.id),
-                    'positive': state.ans2.map(a => a.id)}
+            if (description) {
+                nextSlide(currentEpisode + 1);
+            } else {
+                const value = {
+                    interactionId: interaction.id,
+                    dragDropAnswers: {
+                        'negative': state.ans1.map(a => a.id),
+                        'positive': state.ans2.map(a => a.id)
+                    }
 
-            };
-            responseInteraction(token, value);
-            nextSlide(currentEpisode + 1);
+                };
+
+                responseInteraction(token, value);
+                if(!interaction.interactionDefinition)
+                    nextSlide(currentEpisode + 1);
+                else
+                    setDescription(JSON.parse(interaction.interactionDefinition))
+            }
         }
 
     };
@@ -43,7 +54,21 @@ const DragAndDrop = ({interaction}) => {
                 footer={<Button onClick={handleOk}>Ok</Button>}
             >
                 <div>
-                    <DNDComponent columns={interaction.columns} data={interaction.data} setState={setState}/>
+                    {description ? Object.keys(description).map((q, qid) => {
+                            if (!description[q].name)
+                                return <div key={qid}>{description[q]}</div>;
+
+                            return <div key={qid}>
+                                <div><b>{description[q].name}</b></div>
+                                {description[q].data.map((d, did) => <div key={did}>
+                                    {d}
+                                </div>)}
+                            </div>
+                        }
+                    ) :
+                        <DNDComponent columns={interaction.columns} data={interaction.data} setState={setState}/>
+                    }
+
                 </div>
 
             </Modal>

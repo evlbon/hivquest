@@ -17,7 +17,6 @@ const GameLayout = (props) => {
         !isAuthorize && props.history.push('/login/');
         const handleResize = () => setIsMobile(window.innerWidth < 576);
         window.addEventListener('resize', handleResize);
-        console.log(state)
         return () => {
             window.removeEventListener('resize', handleResize);
         };

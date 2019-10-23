@@ -24,12 +24,12 @@ const StartGame = () => {
         <div>
             <div className="startPage">
                 <Button
-                    style={{width: '40vw', height: '20vh', fontSize: 'xx-large', margin:'0 10vw'}}
+                    style={{width: '40vw', height: '20vmin', fontSize: '5vw', margin:'0 10vw'}}
                     onClick={handleStart}
                 >
                     Начать игру
                 </Button>
-                <div style={{fontSize: 'medium', textAlign: 'center', color: '#ffe45a'}}>
+                <div style={{fontSize: '3vw', textAlign: 'center', color: '#ffe45a'}}>
                     здесь можно увидеть <Link to="/registration/s/" target="_blank">правила</Link>
                 </div>
             </div>

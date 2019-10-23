@@ -11,14 +11,14 @@ const Slide = ({img, style, order, speech, authorText}) => {
     const getBalloons = () => {
         return speech.map((b, bid) => {
             const animationDelay = style === 'd'?{
-                animationDelay:`${4*order+5/speech.length*bid}s`,
+                animationDelay:`${3*order+5/speech.length*bid}s`,
             }:{
-                animationDelay:`${4*order+5/speech.length*bid}s`,
+                animationDelay:`${3*order+5/speech.length*bid}s`,
 
             };
 
             const padTop = style === 'd'?{
-                paddingTop: `${b[2].length>200?2*b[2].length/200:2}vw`
+                paddingBottom: `${b[2].length>200?2*b[2].length/200:2}vw`
 
             }:{
                 paddingTop: `${b[2].length>200?4*b[2].length/200:3}vmax`,
@@ -27,7 +27,7 @@ const Slide = ({img, style, order, speech, authorText}) => {
             };
 
             const padBot = style === 'd'?{
-                paddingTop: `${b[2].length>200?2*b[2].length/200:2}vw`
+                paddingTop: `${b[2].length>200?2.3*b[2].length/200:2}vw`
 
             }:{
                 paddingBottom: `${b[2].length>200?4*b[2].length/200:3}vmax`,
@@ -48,7 +48,7 @@ const Slide = ({img, style, order, speech, authorText}) => {
 
 
     const authorTextSize = authorText && (authorText.length <= 140 ? 'AuthorTextB' :
-        authorText.length <= 240 ? 'AuthorTextM' : authorText.length <= 450 ? 'AuthorTextS' : 'AuthorTextXS');
+        authorText.length <= 240 ? 'AuthorTextM' : authorText.length <= 290 ? 'AuthorTextS' : 'AuthorTextXS');
 
     return (
         <div style={{backgroundImage: img}} className={`anim-show ${style}Slide`}>

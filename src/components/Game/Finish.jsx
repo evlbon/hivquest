@@ -2,11 +2,16 @@ import React, {useEffect, useState} from "react";
 import {useGameAction, useGameState} from "../../context";
 import {Button, Checkbox, Icon} from "antd";
 import {Link} from "react-router-dom";
+import requests from "../../requests";
 
 const FinishGame = () => {
 
     const { points } = useGameState();
     const {logOut} = useGameAction();
+
+    useEffect(()=>{
+        requests.finishGame().catch(e => console.log(e.message))
+    });
 
     const handleLogOut = () => {
         logOut();

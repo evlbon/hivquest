@@ -35,6 +35,7 @@ const Game = ({child}) => {
                 setInteraction(0);
                 if (r.data.length === 3)
                     setSlides(r.data);
+                console.log(r)
                 getPoints(token);
             }).catch(e => {
                 setSlides(undefined);

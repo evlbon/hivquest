@@ -1,5 +1,5 @@
 import React from "react";
-import {withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {
     Form,
     Input,
@@ -80,10 +80,11 @@ const LogInForm = (props) => {
                     <Button htmlType="submit">
                         Войти
                     </Button>
-                    <Button type="primary" style={{marginLeft: '1vw'}} onClick={() => props.history.push('/registration/')}>
+                    <Button type="primary" style={{marginLeft: '1vw',marginRight: '1vw'}} onClick={() => props.history.push('/registration/')}>
                         Регистрация
                         <Icon type="arrow-right" />
                     </Button>
+                    <Link to="/registration/s/" target="_blank">Правила игры</Link>
                 </div>
             </Form.Item>
         </Form>

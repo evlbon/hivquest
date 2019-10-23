@@ -15,13 +15,14 @@ const DesktopView = ({slides, img, text, onClick}) => {
     }, [currentEpisode]);
 
     return <div>
-        <div style={{padding: `0 3vw`, marginBottom: '1vh'}}>
+        <div style={{padding: `10px 3vw`, marginBottom: '1vh', overflow:'hidden'}}>
             <Row gutter={16}>
                 {slides && slides.map((s, sid) => (
                     <Col key={sid} sm={{span: 8}}>
                         <div style={sid === id ? {
                             boxShadow: '0 0 10px 0 #ffe45a',
                             width: '30vw',
+                            height: '53vw',
                             maxHeight: '80vh',
                             maxWidth: '45vh',
                             overflow: 'hidden'

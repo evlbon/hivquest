@@ -10,6 +10,7 @@ const endpoints = {
     getUser: `${authUrl}/user`,
 
     startGame: `${gameUrl}/start_game`,
+    finishGame: `${gameUrl}/finish_game`,
     getSlide: `${gameUrl}/slide`,
     responseInteraction: `${gameUrl}/response_interaction`,
 };

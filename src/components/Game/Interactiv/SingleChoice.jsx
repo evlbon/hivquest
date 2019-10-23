@@ -22,8 +22,12 @@ const SingleChoice = ({interaction}) => {
                     interactionId: interaction.id,
                     answers: answers,
                 };
+
                 responseInteraction(token, value);
-                setDescription(JSON.parse(interaction.interactionDefinition))
+                if(!interaction.interactionDefinition)
+                    nextSlide(currentEpisode + 1);
+                else
+                    setDescription(JSON.parse(interaction.interactionDefinition))
             }
         }
     };
@@ -61,8 +65,10 @@ const SingleChoice = ({interaction}) => {
                 <div style = {{maxHeight:'70vh', overflow: 'scroll'}}>
                     {
                         description ? Object.keys(description).map((q, qid) => {
-                            if(!description[q].name)
+                            if(!description[q].name){
                                 return <div key={qid}>{description[q]}</div>;
+                            }
+
 
                             return<div key={qid}>
                                 <div><b>{description[q].name}</b></div>
