@@ -23,7 +23,7 @@ const MobileView = ({slides, img, text,onClick,reset}) => {
             executeScroll(i);
     },[currentEpisode]);
 
-    return <div >
+    return <div>
             {slides && slides.map((s, sid) => (
                     <div ref={ref[sid]} key={sid} style={{height: '100vh'}}>
                         <Slide img={img(sid)} style={"m"} order={sid}
@@ -35,7 +35,6 @@ const MobileView = ({slides, img, text,onClick,reset}) => {
         <div className="mNext">
             <Affix offsetBottom={20}>
                 <Button
-                    type="primary"
                     size={'large'}
                     onClick={onClick}
                 >
@@ -43,6 +42,7 @@ const MobileView = ({slides, img, text,onClick,reset}) => {
                 </Button>
             </Affix>
         </div>
+        <div style={{marginLeft: 30, fontSize: 'large', color:'#ffe45a'}}>Очков: {points}</div>
     </div>
 };
 

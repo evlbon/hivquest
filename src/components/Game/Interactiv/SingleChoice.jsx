@@ -58,7 +58,7 @@ const SingleChoice = ({interaction}) => {
                 closable={false}
                 footer={<Button onClick={handleOk}>Ok</Button>}
             >
-                <div style = {{maxHeight:'80vh', overflow: 'scroll'}}>
+                <div style = {{maxHeight:'70vh', overflow: 'scroll'}}>
                     {
                         description ? Object.keys(description).map((q, qid) => {
                             if(!description[q].name)

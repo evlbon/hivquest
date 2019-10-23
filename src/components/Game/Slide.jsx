@@ -10,20 +10,39 @@ const Slide = ({img, style, order, speech, authorText}) => {
 
     const getBalloons = () => {
         return speech.map((b, bid) => {
-            const animationDelay = {
-                animationDelay:`${6*order+6/speech.length*bid}s`,
+            const animationDelay = style === 'd'?{
+                animationDelay:`${4*order+5/speech.length*bid}s`,
+            }:{
+                animationDelay:`${4*order+5/speech.length*bid}s`,
+
+            };
+
+            const padTop = style === 'd'?{
                 paddingTop: `${b[2].length>200?2*b[2].length/200:2}vw`
+
+            }:{
+                paddingTop: `${b[2].length>200?4*b[2].length/200:3}vmax`,
+                paddingBottom: `${b[2].length>200?8*b[2].length/200:3}vmax`
+
+            };
+
+            const padBot = style === 'd'?{
+                paddingTop: `${b[2].length>200?2*b[2].length/200:2}vw`
+
+            }:{
+                paddingBottom: `${b[2].length>200?4*b[2].length/200:3}vmax`,
+                paddingTop: `${b[2].length>200?8*b[2].length/200:5}vmax`
 
             };
 
             return [b[0], b[1], b[3] ?
                 b[4] ?
-                    <Balloon.Right.Top text={b[2]} slide={order} order={bid} style={style} animationDelay={animationDelay}/> :
-                    <Balloon.Right text={b[2]} slide={order} order={bid} style={style} animationDelay={animationDelay}/> :
+                    <Balloon.Right.Top text={b[2]} slide={order} order={bid} style={style} animationDelay={{...animationDelay,...padBot}}/> :
+                    <Balloon.Right text={b[2]} slide={order} order={bid} style={style} animationDelay={{...animationDelay,...padTop}}/> :
                 b[4] ?
-                    <Balloon.Left.Top text={b[2]} slide={order} order={bid} style={style} animationDelay={animationDelay}/>
+                    <Balloon.Left.Top text={b[2]} slide={order} order={bid} style={style} animationDelay={{...animationDelay,...padBot}}/>
                     :
-                    <Balloon.Left text={b[2]} slide={order} order={bid} style={style} animationDelay={animationDelay}/>]
+                    <Balloon.Left text={b[2]} slide={order} order={bid} style={style} animationDelay={{...animationDelay,...padTop}}/>]
         })
     };
 

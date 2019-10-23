@@ -28,10 +28,10 @@ const GameLayout = (props) => {
     };
 
     if (currentEpisode > 0 && currentEpisode < 64)
-        return <div>
-            <div style={{margin: '1vh 5vw', paddingLeft: '85vw'}}>
+        return <div style={{maxWidth:'130vw', overflow:'hidden'}}>
+            <div style={{margin: '1vh 5vw', paddingLeft: '75vw'}}>
                 <Button className="ant-btn" onClick={handleLogOut}>
-                    <Icon style={{fontSize: '3vh'}} type="logout"/>
+                    <Icon style={{fontSize: '3vmin'}} type="logout"/>
                 </Button>
             </div>
             {isMobile ? <Mobile/> : <Desktop/>}

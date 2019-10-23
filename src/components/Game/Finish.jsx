@@ -14,14 +14,14 @@ const FinishGame = () => {
 
     return (
         <div>
-            <div style={{margin: '1vh 5vw', paddingLeft: '85vw'}}>
+            <div style={{margin: '1vh 5vw', paddingLeft: '75vw'}}>
                 <Button className="ant-btn" onClick={handleLogOut}>
                     <Icon style={{fontSize: '3vh'}} type="logout"/>
                 </Button>
             </div>
             <div className="startPage">
                 <div
-                    style={{width: '40vw', height: '20vh', fontSize: 'xx-large', textAlign: 'center', color: '#ffe45a'}}
+                    style={{width: '60vw',  fontSize: 'xx-large', textAlign: 'center', color: '#ffe45a'}}
                 >
                     <h1 style={{ color: '#ffe45a'}}><b>Конец игры</b></h1>
                     вы набрали <span style={{color:'red'}}>{points}</span> очков
