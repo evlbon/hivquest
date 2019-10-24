@@ -17,7 +17,7 @@ const AdminPanel = ({history}) => {
     const {admin_token} = useGameState();
     useEffect(() => {
         console.log(admin_token)
-        !admin_token && history.push('/admin_login/')
+        !admin_token && history.push('/admin_panel/')
     }, [admin_token]);
 
 

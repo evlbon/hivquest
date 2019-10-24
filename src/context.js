@@ -41,7 +41,7 @@ const reducer = (state, action) => {
 };
 
 export const GameContextProvider = ({children}) => {
-    const [state, dispatch] = useReducer(reducer, {user: null, token: null, isAuthorize: false, admin_token: 'asd'});
+    const [state, dispatch] = useReducer(reducer, {user: null, token: null, isAuthorize: false, admin_token: null});
 
     const logIn = async (value) => {
         try {

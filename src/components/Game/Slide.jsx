@@ -21,8 +21,8 @@ const Slide = ({img, style, order, speech, authorText}) => {
                 paddingBottom: `${b[2].length>200?2*b[2].length/200:2}vw`
 
             }:{
-                paddingTop: `${b[2].length>200?4*b[2].length/200:3}vmax`,
-                paddingBottom: `${b[2].length>200?8*b[2].length/200:3}vmax`
+                paddingTop: `${b[2].length>200?4*b[2].length/200:1}vmax`,
+                paddingBottom: `${b[2].length>200?8*b[2].length/200:5}vmax`
 
             };
 
