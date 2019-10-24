@@ -118,8 +118,23 @@ const finishGame = async (token) => {
     })
 };
 
+const adminLogin = (value) => {
+    const endPoint = endpoints.adminLogin;
+
+    const body = JSON.stringify(value);
+
+    return axios({
+        "method": "POST",
+        "url": endPoint,
+        "data": body,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+};
+
 const requests = {
-    login, registration, cities, startGame, getSlide, getUser, responseInteraction,finishGame
+    login, registration, cities, startGame, getSlide, getUser, responseInteraction,finishGame,adminLogin
 };
 
 export default requests;

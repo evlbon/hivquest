@@ -28,6 +28,12 @@ const reducer = (state, action) => {
                 ...state,
                 ...action.payload,
             };
+        case 'RECEIVE_ADMIN_TOKEN':
+            return {
+                ...state,
+                admin_token: action.payload,
+            };
+
         default:
             return state;
 
@@ -35,7 +41,7 @@ const reducer = (state, action) => {
 };
 
 export const GameContextProvider = ({children}) => {
-    const [state, dispatch] = useReducer(reducer, {user: null, token: null, isAuthorize: false});
+    const [state, dispatch] = useReducer(reducer, {user: null, token: null, isAuthorize: false, admin_token: 'asd'});
 
     const logIn = async (value) => {
         try {
@@ -57,6 +63,24 @@ export const GameContextProvider = ({children}) => {
             callbacks.error('Данные введены не верно или аккаунт не зарегистрирован')
         }
     };
+
+    const adminLogin = (values) => {
+        requests.adminLogin(values).then(r => {
+            console.log(r)
+
+            const token = r.data.token;
+            dispatch({
+                type: 'RECEIVE_ADMIN_TOKEN',
+                payload: token,
+            });
+
+        }).catch(e => {
+            console.log(e.response)
+            e.response&&callbacks.error(e.response.data.message)
+
+        })
+
+    }
 
     const registration = async (value, callback) => {
         try {
@@ -141,7 +165,7 @@ export const GameContextProvider = ({children}) => {
         });
     };
 
-    const actions = {registration, logIn, logOut, getUser, checkAuth, nextSlide, responseInteraction, getPoints};
+    const actions = {registration, logIn, logOut, getUser, checkAuth, nextSlide, responseInteraction, getPoints, adminLogin};
 
     return (
         <GameContext.Provider value={{state, actions}}>

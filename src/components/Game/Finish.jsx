@@ -6,11 +6,11 @@ import requests from "../../requests";
 
 const FinishGame = () => {
 
-    const { points } = useGameState();
+    const { points, token } = useGameState();
     const {logOut} = useGameAction();
 
     useEffect(()=>{
-        requests.finishGame().catch(e => console.log(e.message))
+        requests.finishGame(token).catch(e => console.log(e.message))
     });
 
     const handleLogOut = () => {

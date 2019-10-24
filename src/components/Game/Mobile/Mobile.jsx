@@ -10,7 +10,7 @@ const { Link } = Anchor;
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
 
-const MobileView = ({slides, img, text,onClick,reset}) => {
+const MobileView = ({slides, img, text,onClick}) => {
     const {currentEpisode, points} = useGameState();
     const ref = [useRef(null),useRef(null),useRef(null)];
 

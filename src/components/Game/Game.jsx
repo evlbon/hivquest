@@ -83,8 +83,10 @@ const Game = ({child}) => {
     };
 
     return (<div style={{marginBottom: '10vh'}}>
-            {child&&child({slides, img:getImage, text:getText, onClick,reset})}
-            <div style={{marginRight: 50,marginTop: 80, float: "left"}}><Button style={{background:'rgb(26, 52, 126)'}} onClick={reset}>Reset</Button></div>
+            {child&&child({slides, img:getImage, text:getText, onClick})}
+            {/*<div style={{marginRight: 50,marginTop: 80, float: "left"}}>*/}
+            {/*    <Button style={{background:'rgb(26, 52, 126)'}} onClick={reset}>Reset</Button>*/}
+            {/*</div>*/}
             {getInter()}
 
             <div style={{visibility: 'hidden'}}>

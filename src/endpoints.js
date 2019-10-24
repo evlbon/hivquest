@@ -1,6 +1,7 @@
 const baseUrl = 'http://78.46.183.3:8080/api';
 const authUrl = `${baseUrl}/auth`;
 const gameUrl = `${baseUrl}/game`;
+const adminUrl = `${baseUrl}/admin`;
 
 
 const endpoints = {
@@ -13,6 +14,8 @@ const endpoints = {
     finishGame: `${gameUrl}/finish_game`,
     getSlide: `${gameUrl}/slide`,
     responseInteraction: `${gameUrl}/response_interaction`,
+
+    adminLogin: `${adminUrl}/admin_login`,
 };
 
 export default endpoints;
