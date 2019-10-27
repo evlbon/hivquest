@@ -17,7 +17,6 @@ const MultipleChoice = ({interaction}) => {
             if (description) {
                 nextSlide(currentEpisode + 1);
             } else {
-                console.log(ans)
                 const value = {
                     interactionId: interaction.id,
                     answers: getAns(),
@@ -33,7 +32,6 @@ const MultipleChoice = ({interaction}) => {
     };
 
     const getAns = () => ans.map((a) => {
-        console.log(interaction.data[a-1])
 
         return {id:interaction.data[a-1].id, answer:interaction.data[a-1].text}
     });

@@ -57,7 +57,6 @@ const RegistrationForm = (props) => {
                     ucpa: values.ucpa ? 1 : 0,
                     phone: `${values.prefix}${values.phone}`
                 };
-                console.log('Received values of form: ', {...values, ...changed});
                 registration({...values, ...changed}, () => {
                     props.history.push('/login/')
                 })
@@ -113,7 +112,6 @@ const RegistrationForm = (props) => {
         } else {
             try {
                 const response = await requests.cities({city: value});
-                // console.log(response)
                 autoCompleteResult = response.data.map(d => {
                     const item = `${d.cityName}, ${d.regionName}`;
                     autoCompleteIndexes[item] = d.cityId;

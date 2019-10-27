@@ -66,7 +66,6 @@ export const GameContextProvider = ({children}) => {
 
     const adminLogin = (values) => {
         requests.adminLogin(values).then(r => {
-            console.log(r)
 
             const token = r.data.token;
             dispatch({

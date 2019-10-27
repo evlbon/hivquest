@@ -33,17 +33,14 @@ const AdminPanel = ({history}) => {
             if(e.response.status===451)
                 setStatus(false);
             else
-                setStatus(true)
-            console.log(e.response.status)
+                setStatus(true);
 
         })
     },[status]);
     useEffect(() => {
-        console.log(admin_token)
         !admin_token && history.push('/admin_login/')
         requests.currentSessions(admin_token)
             .then(r => {
-                console.log(r.data)
                 setData(r.data)
             })
             .catch(e => {
@@ -53,7 +50,6 @@ const AdminPanel = ({history}) => {
             });
         requests.finishedPlayers(admin_token)
             .then(r => {
-                console.log(r.data);
                 setData2(r.data);
 
             })

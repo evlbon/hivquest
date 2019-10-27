@@ -135,7 +135,6 @@ const adminLogin = (value) => {
 
 const currentSessions = async (token) => {
     const endPoint = endpoints.currentSessions;
-    console.log(token);
 
     return axios({
         "method": "GET",
