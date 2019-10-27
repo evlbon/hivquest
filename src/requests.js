@@ -133,8 +133,64 @@ const adminLogin = (value) => {
     })
 };
 
+const currentSessions = async (token) => {
+    const endPoint = endpoints.currentSessions;
+    console.log(token);
+
+    return axios({
+        "method": "GET",
+        "url": endPoint,
+        headers: {
+            'Content-Type': 'application/json',
+            token,
+        },
+    })
+};
+
+const finishedPlayers = async (token) => {
+    const endPoint = endpoints.finishedPlayers;
+
+    return axios({
+        "method": "GET",
+        "url": endPoint,
+        headers: {
+            'Content-Type': 'application/json',
+            token,
+        },
+    })
+};
+
+
+const adminTurnOn = (token) => {
+    const endPoint = endpoints.adminTurnOn;
+
+    return axios({
+        "method": "POST",
+        "url": endPoint,
+        headers: {
+            'Content-Type': 'application/json',
+            token
+
+        },
+    })
+};
+
+const adminTurnOff = (token) => {
+    const endPoint = endpoints.adminTurnOff;
+
+    return axios({
+        "method": "POST",
+        "url": endPoint,
+        headers: {
+            'Content-Type': 'application/json',
+            token
+        },
+    })
+};
+
 const requests = {
-    login, registration, cities, startGame, getSlide, getUser, responseInteraction,finishGame,adminLogin
+    login, registration, cities, startGame, getSlide, getUser, responseInteraction,finishGame,adminLogin,currentSessions,
+    finishedPlayers,adminTurnOn,adminTurnOff
 };
 
 export default requests;

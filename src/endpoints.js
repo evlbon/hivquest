@@ -16,6 +16,10 @@ const endpoints = {
     responseInteraction: `${gameUrl}/response_interaction`,
 
     adminLogin: `${adminUrl}/admin_login`,
+    currentSessions: `${adminUrl}/admin_current_sessions`,
+    finishedPlayers: `${adminUrl}/admin_finished_players`,
+    adminTurnOn: `${adminUrl}/admin_turn_on`,
+    adminTurnOff: `${adminUrl}/admin_turn_off`,
 };
 
 export default endpoints;

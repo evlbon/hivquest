@@ -39,12 +39,9 @@ const AdminLogInForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         props.form.validateFieldsAndScroll((err, values) => {
-            adminLogin(values)
             console.log(values)
             if (!err) {
-
-
-                // logIn(values);
+                adminLogin(values)
             }
         });
     };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Table, Divider, Tag} from 'antd';
 import { compare } from 'natural-orderby';
 
@@ -10,9 +10,22 @@ const columns = [
         sorter: (a, b) => a.points - b.points,
     },
     {
-        title: 'Время',
-        dataIndex: 'time',
-        key: 'time',
+        title: 'Имя',
+        dataIndex: 'name',
+        key: 'name',
+        sorter: (a,b) => compare()(a.name , b.name)
+    },
+    {
+        title: 'Фамилия',
+        dataIndex: 'familyName',
+        key: 'familyName',
+        sorter: (a,b) => compare()(a.familyName , b.familyName)
+    },
+    {
+        title: 'Отчество',
+        dataIndex: 'patronymic',
+        key: 'patronymic',
+        sorter: (a,b) => compare()(a.patronymic , b.patronymic)
     },
     {
         title: 'Телефон',
@@ -24,46 +37,49 @@ const columns = [
         title: 'Почта',
         dataIndex: 'email',
         key: 'email',
+        sorter: (a,b) => compare()(a.email , b.email)
     },
     {
         title: 'Регион',
-        dataIndex: 'address',
-        key: 'address',
+        dataIndex: 'fullAddress',
+        key: 'fullAddress',
+        sorter: (a,b) => compare()(a.fullAddress , b.fullAddress)
     },
     {
         title: 'Школа',
-        dataIndex: 'school',
-        key: 'school',
+        dataIndex: 'education',
+        key: 'education',
+        sorter: (a,b) => compare()(a.education , b.education)
     },
     {
         title: 'Играет',
-        dataIndex: 'isComplete',
-        key: 'isComplete',
-        render: isComplete => isComplete?'Нет':'Да',
-        sorter: (a, b) => a.isComplete,
+        key: 'questStarted',
+        render: user => {
+            let color = 'red';
+            let tag = 'err';
+            let date = new Date(user.questFinished);
+            if(user.currentEpisode ===-1){
+                color = 'geekblue';
+                tag = 'НЕ НАЧАЛ';
+            }
+            else{
+                if(date.getFullYear() === 1970){
+                    color = 'green';
+                    tag = 'ИГРАЕТ';
+                }
+                else{
+                    color='volcano';
+                    tag = 'ЗАКОНЧИЛ';
+                }
+            }
+            return <Tag color={color} key={user.id}>
+                {tag}
+            </Tag>
+        }
     },
-    // {
-    //     title: 'Tags',
-    //     key: 'tags',
-    //     dataIndex: 'tags',
-    //     render: tags => (
-    //         <span>
-    //     {tags.map(tag => {
-    //         let color = tag.length > 5 ? 'geekblue' : 'green';
-    //         if (tag === 'loser') {
-    //             color = 'volcano';
-    //         }
-    //         return (
-    //             <Tag color={color} key={tag}>
-    //                 {tag.toUpperCase()}
-    //             </Tag>
-    //         );
-    //     })}
-    //   </span>
-    //     ),
-    // },
 ];
 const AdminTable = ({data}) => {
+    useEffect(()=>{},[data]);
     return <Table columns={columns} dataSource={data.map((d, id) => ({key: id, ...d}))}/>
 };
 export default AdminTable;
