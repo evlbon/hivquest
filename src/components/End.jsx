@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
-import {Table, Divider, Tag} from 'antd';
+import {Table, Divider, Tag, Pagination} from 'antd';
 import {compare} from 'natural-orderby';
+import {Link} from "react-router-dom";
 
 const columns = [
     {
@@ -67,9 +68,21 @@ const End = () => {
         return {place, familyName, name, fullAddress, points}
     });
 
-    return <div style={{background: '#ffffff', minHeight: '100vh'}}>
-        <h1 style={{marginLeft: 10}}>Результаты</h1>
-        <Table columns={columns} dataSource={data.map((d, id) => ({key: id, ...d}))} pagination = {false}/>
+    return <div style={{background: '#ffffff', minHeight: '100vh', padding:'5vh 5vw'}}>
+        <h2 style={{textAlign: 'center', margin: '0 0 5vh 0'}}>
+            Дорогие участники, завершился самый массовый Онлайн-квест за последние 5 лет!<br/>
+            В нем приняло участие 7839 человек! Поздравляем победителей!<br/>
+            Если вы хотите участвовать в наших будущих квестах, вступайте в
+             <a href="https://vk.com/goquest.online" target="_blank"> группу Вконтакте</a><br/>
+            До новых встреч!
+        </h2>
+        {/*<h1 style={{marginLeft: 10}}>Результаты</h1>*/}
+        {/*pagination = {false}*/}
+        <Table bordered
+               columns={columns}
+               dataSource={data.map((d, id) => ({key: id, ...d}))}
+               pagination={{pageSize: 8}}
+        />
     </div>
 };
 
